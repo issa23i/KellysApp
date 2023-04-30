@@ -1,7 +1,15 @@
-/* $primary: #e71d73;
-@import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
+/** CREAR LAS VARIABLES PROPIAS Y LAS VARIABLES DE BOOTSTRAP A SOBREESCRIBIR **/
 
- */
+$primary: #e71d73;
+$secondary: #1EE826;
+$letra_titulos:#5d5b53;
+$texto: #858585;
+
+/** IMPORTAR BOOTSTRAP **/
+@import '../node_modules/bootstrap/scss/bootstrap.scss';
+
+/** PERSONALIZAR ESTILOS **/
+
 /* FUENTE Acumin Variable Concept */
 @font-face {
     font-family: "Acumin Variable Concept";
@@ -10,13 +18,14 @@
   * {
     font-family: "Acumin Variable Concept";
   }
+
+
   /* TITULOS */
-  
   h1,h3,h4,h5 {
-    color: #5d5b53;
+    color: $letra_titulos;
   }
   h2{
-      color:#e71d73;
+      color: $primary;
   }
   h1 {
       font-size: 28px;
@@ -24,7 +33,7 @@
   }
   h2,h3{
       font-size: 20px;
-      font-weight: 500;
+      font-weight: 600;
   }
   h4,h5{
       font-size: 16px;
@@ -34,18 +43,18 @@
   }
   p{
       font-size: 16px;
-      color: #858585;
+      color: $texto
   }
-  
   
   
   /* COLORES */
   ion-icon {
-    color: #e71d73;
+    color: $primary;
   }
-  .bg-primary{
-      background-color: #e71d73 ;
-  }
-  .bg-secondary{ 
-    background-color: #1EE826;
+  
+  /* BOTONES */
+  .btn {
+    color:white;
+    font-weight: 800;
+    font-size: 21px;
   }
