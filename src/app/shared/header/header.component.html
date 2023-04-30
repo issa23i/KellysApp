@@ -1,3 +1,34 @@
-<p>
-  header works!
-</p>
+<!-- HEADER -->
+<ion-toolbar>
+  <div id="main-content">
+    <ion-header collapse="fade">
+      <ion-toolbar>
+        <ion-buttons slot="start">
+          <ion-menu-button></ion-menu-button>
+        
+           </ion-buttons>
+        <ion-title class="ion-text-center ion-padding">
+          <img
+            src="./../../../assets/images/logoKellysApp_black.svg"
+            alt="Logo"
+            id="logo"
+          />
+        </ion-title>
+        <ion-icon id="persona" name="person-circle-outline" slot="end"></ion-icon>
+      </ion-toolbar>
+    </ion-header>
+  </div>
+</ion-toolbar>
+
+<!-- MODAL AL SELECCIONAR EL MENÚ HAMBURGUESA -->
+<ion-menu contentId="main-content">
+  <ion-toolbar> 
+    <ion-title>MENU</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="closeMenu()">
+        <ion-icon name="close"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+  <ion-content class="ion-padding"> This is the menu content. </ion-content>
+</ion-menu>

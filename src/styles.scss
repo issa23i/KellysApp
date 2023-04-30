@@ -1,0 +1,51 @@
+/* $primary: #e71d73;
+@import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
+
+ */
+/* FUENTE Acumin Variable Concept */
+@font-face {
+    font-family: "Acumin Variable Concept";
+    src: url("./assets/fonts/Acumin\ Variable\ Concept.ttf");
+  }
+  * {
+    font-family: "Acumin Variable Concept";
+  }
+  /* TITULOS */
+  
+  h1,h3,h4,h5 {
+    color: #5d5b53;
+  }
+  h2{
+      color:#e71d73;
+  }
+  h1 {
+      font-size: 28px;
+      font-weight: 800;
+  }
+  h2,h3{
+      font-size: 20px;
+      font-weight: 500;
+  }
+  h4,h5{
+      font-size: 16px;
+  }
+  h5{
+      font-weight: 400;
+  }
+  p{
+      font-size: 16px;
+      color: #858585;
+  }
+  
+  
+  
+  /* COLORES */
+  ion-icon {
+    color: #e71d73;
+  }
+  .bg-primary{
+      background-color: #e71d73 ;
+  }
+  .bg-secondary{ 
+    background-color: #1EE826;
+  }
