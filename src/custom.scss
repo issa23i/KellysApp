@@ -16,7 +16,8 @@ $texto: #858585;
     src: url("./assets/fonts/Acumin\ Variable\ Concept.ttf");
   }
   * {
-    font-family: "Acumin Variable Concept";
+    font-family: "Acumin Variable Concept"!important;
+    color:$texto;
   }
 
 
