@@ -15,11 +15,11 @@ import { CookieService } from 'ngx-cookie-service';
 @NgModule({
   declarations: [AppComponent],
   imports: [PagesModule,FormsModule, BrowserModule, IonicModule.forRoot(), AppRoutingModule, SharedModule, HttpClientModule],
-  providers: [CookieService,/* {
+  providers: [CookieService,{
     provide: HTTP_INTERCEPTORS,
     useClass: AuthInterceptorService,
     multi: true
-  }, */ { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
+  }, { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

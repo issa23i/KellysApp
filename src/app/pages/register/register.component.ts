@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -17,7 +18,7 @@ export class RegisterComponent   {
   apellido2!: string;
   passwordError!: boolean
 
-  constructor(public auth:AuthService) {}
+  constructor(public auth:AuthService, public router: Router) {}
 
   register() {
     const user = 
@@ -34,6 +35,7 @@ export class RegisterComponent   {
       
       this.auth.setToken(this.auth.token)
       console.log(this.auth.getToken())
+      this.router.navigateByUrl("/home")
     })
   }
 
