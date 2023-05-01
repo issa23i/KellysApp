@@ -12,11 +12,14 @@ $RECYCLE.BIN/
 *.log
 log.txt
 
-todo.todo
 
 /.sourcemaps
 /.versions
 /coverage
+
+# TO DO
+todo.todo
+*.todo
 
 # Ionic
 /.ionic
