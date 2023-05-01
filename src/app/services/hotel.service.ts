@@ -9,12 +9,15 @@ import { Hotel } from '../interfaces/hotel';
 })
 export class HotelService {
 
-  private _apiUrlHotel : string = `${environment.apiUrl}/hoteles`;
+  private _apiUrlHoteles : string = `${environment.apiUrl}/hoteles`;
   private _hoteles: Hotel[] = [];
   
- 
+ /**
+  * Petición http que devuelve un listado de hoteles o error
+  * @param http HttpClient
+  */
   constructor(private http: HttpClient) { 
-    this.http.get<Hotel[]>(this._apiUrlHotel)
+    this.http.get<Hotel[]>(this._apiUrlHoteles)
     .subscribe({
       next: (resp: Hotel[]) => {
         this._hoteles = resp

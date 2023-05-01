@@ -5,11 +5,23 @@ import { MiPerfilComponent } from './pages/mi-perfil/mi-perfil.component';
 import { HotelComponent } from './pages/hotel/hotel.component';
 import { MisReservasComponent } from './pages/mis-reservas/mis-reservas.component';
 import { PorQueComponent } from './pages/por-que/por-que.component';
+import { LoginComponent } from './pages/login/login.component';
+import { RegisterComponent } from './pages/register/register.component';
 
 const routes: Routes = [
   {
     path: 'home',
     component: HomeComponent,
+    pathMatch: 'full'
+  },
+  {
+    path: 'login',
+    component: LoginComponent,
+    pathMatch: 'full'
+  },
+  {
+    path: 'registro',
+    component: RegisterComponent,
     pathMatch: 'full'
   },
   {
