@@ -1,2 +1,3 @@
 TODO: Mostrar mensaje después de login y register, al entrar en home
 TODO: Quitar todos los console.log
+TODO: Logout this.cookies.delete("token") y lo mismo con user
