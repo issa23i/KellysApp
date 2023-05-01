@@ -28,6 +28,11 @@ const routes: Routes = [
     pathMatch: 'full'
   },
   {
+    path: 'hotel',
+    component: HotelComponent,
+    pathMatch: 'full'
+  },
+  {
     path: 'hotel/:id',
     component: HotelComponent,
     pathMatch: 'full'
