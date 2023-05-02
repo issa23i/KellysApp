@@ -40,15 +40,20 @@ export class AuthService {
   }
 
   setToken(token: string){
-    this.cookies.set("token", token);
+    this.cookies.set("token", token, ((1/24)*2)) // Expira en 2 horas;);
   }
 
   setUsuario(usuario: Usuario){
-    this.cookies.set("usuario", JSON.stringify(usuario));
+    this.cookies.set("usuario", JSON.stringify(usuario),((1/24)*2)) // Expira en 2 horas;
   }
 
   getUsuario(){
-    return JSON.parse(this.cookies.get("usuario"));
+    if(this.cookies.check("usuario")){
+      console.log("hay usuario")
+      return JSON.parse(this.cookies.get("usuario"));
+    }
+    console.log("no hay usuario")
+    return null;
   }
 
   getToken(){

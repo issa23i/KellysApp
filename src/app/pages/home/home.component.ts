@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Usuario } from 'src/app/interfaces/usuario';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-home',
@@ -7,8 +9,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent  implements OnInit {
 
-  constructor() { }
+  constructor(public auth: AuthService) { 
+    this.getUserLogged();
+  }
 
-  ngOnInit() {}
+  ngOnInit() {
+    
+  }
+
+  getUserLogged(){
+    if(this.auth.getUsuario()){
+      let usuario : Usuario = this.auth.getUsuario()
+      console.log(usuario.data.user.nombre);
+     } else {
+      console.log("No hay usuario logado");
+     }
+  }
 
 }
