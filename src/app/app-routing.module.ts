@@ -7,6 +7,7 @@ import { MisReservasComponent } from './pages/mis-reservas/mis-reservas.componen
 import { PorQueComponent } from './pages/por-que/por-que.component';
 import { LoginComponent } from './pages/login/login.component';
 import { RegisterComponent } from './pages/register/register.component';
+import { AuthGuard } from './auth.guard';
 
 const routes: Routes = [
   {
@@ -27,12 +28,14 @@ const routes: Routes = [
   {
     path: 'mi-perfil',
     component: MiPerfilComponent,
-    pathMatch: 'full'
+    pathMatch: 'full',
+    canActivate: [AuthGuard]
   },
   {
     path: 'mis-reservas',
     component: MisReservasComponent,
-    pathMatch: 'full'
+    pathMatch: 'full',
+    canActivate: [AuthGuard]
   },
   {
     path: 'por-que',

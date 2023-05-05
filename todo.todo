@@ -2,4 +2,6 @@ TODO: Mostrar mensaje después de login y register, al entrar en home
 TODO: Quitar todos los console.log
 TODO: Doble comprobación password en formulario login, lógica
 TODO: Logout this.cookies.delete("token") y lo mismo con user
-TODO: Guard
+TODO: Guard: en auth.guard.ts hay que verificar en la API que el token 
+        de la const cookie existe en el backend, y en vez de ser un booleano con get()
+        debe ser un string -> const cookie = this.cookieSErvice.get('token')

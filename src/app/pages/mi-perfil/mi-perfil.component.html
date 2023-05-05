@@ -1,3 +1,24 @@
-<p class="mt-5 pt-5">
-  mi-perfil works!
-</p>
+
+<div  class="mt-5 pt-5 alert alert-info" *ngIf="!existe; else divPersona">
+  <p class="mt-5 pt-5">
+  Espere por favor...</p>
+</div>
+<ng-template #divPersona>
+  <p class="mt-5 pt-5 alert alert-info">    
+    Bienvenid@ {{persona.nombre}}!
+  </p>
+
+  <p>NIF</p>
+  <p>{{persona.nif}}</p>
+  <p>NOMBRE</p>
+  <p>{{persona.nombre}}</p>
+  <p>PRIMER APELLIDO</p>
+  <p>{{persona.apellido1}}</p>
+  <p>SEGUNDO APELLIDO</p>
+  <p>{{persona.apellido2}}</p>
+  <p>EMAIL</p>
+  <p>{{persona.email}}</p>
+  <button>CAMBIAR EMAIL</button>
+  <button>CAMBIAR CONTRASEÑA</button>
+</ng-template>
+
