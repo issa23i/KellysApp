@@ -16,6 +16,7 @@ export class MiPerfilComponent implements OnInit {
     , private changeDetector: ChangeDetectorRef) { }
 
   ngOnInit(): void {
+    console.log(this.personaService.obtenerPersona())
     this.personaService.obtenerPersona()
     .subscribe({
       next: (resp: any) => {

@@ -20,6 +20,7 @@ export class PersonaService {
   public obtenerPersona () {
     let id = this.getIdUsuario()
     console.log(id)
+    // puede que id sea null, si se borra la cookie 'usuario', contemplarlo
     return this.httpClient.get<Persona>(`${environment.apiUrl}/personas/${id}`)
   }
 
