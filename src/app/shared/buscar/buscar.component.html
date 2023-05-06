@@ -1,0 +1,16 @@
+<form (ngSubmit)="buscar()">
+  <label for="ciudad">Ciudad:</label>
+  <input type="text" name="ciudad" [(ngModel)]="parametrosBusqueda.ciudad">
+
+  <label for="checkIn">Check-In:</label>
+  <input type="date" name="checkIn" [(ngModel)]="parametrosBusqueda.checkIn">
+
+  <label for="checkOut">Check-Out:</label>
+  <input type="date" name="checkOut" [(ngModel)]="parametrosBusqueda.checkOut">
+
+  <label for="viajeros">Número de viajeros:</label>
+  <input type="number" name="viajeros" [(ngModel)]="parametrosBusqueda.viajeros">
+
+  <button type="submit">Buscar</button>
+</form>
+

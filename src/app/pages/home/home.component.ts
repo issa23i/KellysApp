@@ -3,9 +3,8 @@ import { Usuario } from 'src/app/interfaces/usuario';
 import { AuthService } from 'src/app/services/auth.service';
 import { HotelService } from '../../services/hotel.service';
 import { Hotel } from 'src/app/interfaces/hotel';
-import { environment } from 'src/environments/environment';
-import { Imagen } from 'src/app/interfaces/imagen';
 import { ImagenService } from 'src/app/services/imagen.service';
+import { BuscarComponent } from 'src/app/shared/buscar/buscar.component';
 
 @Component({
   selector: 'app-home',

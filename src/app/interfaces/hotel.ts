@@ -1,5 +1,5 @@
 export interface Hotel {
-    _id:                string;
+    _id?:                string;
     nombre:             string;
     direccion:          string;
     ciudad:             string;
@@ -9,4 +9,7 @@ export interface Hotel {
     imagenes:           string[];
     puntuacion_resenas: number;
     estrellas:          number;
+    createdAt?:     Date;
+    updatedAt?:     Date;
+    __v?:           number;
 }

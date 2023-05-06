@@ -10,7 +10,7 @@ import { AuthInterceptorService } from './auth-interceptor.service';
 })
 export class PersonaService {
 
-  constructor(private httpClient : HttpClient, private authInterceptorService: AuthInterceptorService, private authService: AuthService) { 
+  constructor(private httpClient : HttpClient, private authService: AuthService) { 
   }
 
   getIdUsuario(){
