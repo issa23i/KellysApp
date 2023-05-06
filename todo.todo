@@ -10,3 +10,6 @@ TODO: Línea 23 de persona.service.ts , debe contemplarse la opción de que el p
 
 TODO: Ahora en home sólo se visualizan los tres primeros hoteles, hacer que cuando se realice el 
         scroll en la lista vuelva a cargar los hoteles
+
+
+TODO: Lo siguientes es hacer el hotelService y el hotelComponent para visualizar y obtener un sólo hotel
