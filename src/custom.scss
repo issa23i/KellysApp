@@ -59,3 +59,10 @@ $texto: #858585;
     font-weight: 800;
     font-size: 21px;
   }
+
+  /* SCROLL EN HOTELES */
+  .hotel-list-container {
+    max-height: 500px; /* altura máxima del contenedor */
+    overflow-y: scroll; /* activar el scroll vertical */
+  }
+ 

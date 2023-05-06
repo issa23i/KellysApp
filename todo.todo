@@ -6,3 +6,7 @@ TODO: Guard: en auth.guard.ts hay que verificar en la API que el token
         de la const cookie existe en el backend, y en vez de ser un booleano con get()
         debe ser un string -> const cookie = this.cookieSErvice.get('token')
 TODO: Línea 23 de persona.service.ts , debe contemplarse la opción de que el parámetro id sea nulo
+
+
+TODO: Ahora en home sólo se visualizan los tres primeros hoteles, hacer que cuando se realice el 
+        scroll en la lista vuelva a cargar los hoteles

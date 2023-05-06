@@ -10,32 +10,19 @@ import { Hotel } from '../interfaces/hotel';
 export class HotelService {
 
   private _apiUrlHoteles : string = `${environment.apiUrl}/hoteles`;
-  private _hoteles: Hotel[] = [];
+  
   
  /**
   * Petición http que devuelve un listado de hoteles o error
   * @param http HttpClient
   */
-  constructor(private http: HttpClient) { 
-    this.http.get<Hotel[]>(this._apiUrlHoteles)
-    .subscribe({
-      next: (resp: Hotel[]) => {
-        this._hoteles = resp
-        console.log(resp)
-      },
-      error: (err) => {
-        console.error(err)
-      }
-    })
-  }
+  constructor(private http: HttpClient) { }
 
 
-  public get hoteles(): Hotel[] {
-    return this._hoteles;
+  obtenerHoteles (){
+    return this.http.get<Hotel[]>(this._apiUrlHoteles)
   }
-  public set hoteles(value: Hotel[]) {
-    this._hoteles = value;
-  }
+
 
 
 }

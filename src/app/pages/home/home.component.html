@@ -1,3 +1,17 @@
-<p class="mt-5 pt-5">
-  home works!
-</p>
+<p class="mt-5 pt-5"></p>
+<div>caja para slider destinos</div>
+<div>caja para formulario de búsqueda</div>
+<h3>Hoteles Éticos</h3>
+<div class="hotel-list-container">
+  
+
+  <p>caja para listado de hoteles éticos</p>
+  <ng-container *ngFor="let hotel of hoteles | slice : 0 : 3; let i = index">
+    <img [src]="imagenes[i]" alt="" />
+    <p>Nombre: {{ hotel.nombre }}</p>
+    <p>Puntuación reseñas : {{ hotel.puntuacion_resenas }}</p>
+    <p>Estrellas : {{ hotel.estrellas }}</p>
+    <p>Ciudad: {{ hotel.ciudad }}</p>
+  </ng-container>
+</div>
+
