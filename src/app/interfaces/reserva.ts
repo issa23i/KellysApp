@@ -1,6 +1,6 @@
 export interface Reserva {
     _id?:           string;
-    cliente:       string;
+    cliente?:       string;
     hotel:         string;
     fechaCheckin:  Date;
     fechaCheckout: Date;
