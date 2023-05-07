@@ -1,3 +1,16 @@
 <section class="mt-5 pt-4">
-  hotel works!
+  <div class="alert alert-info" *ngIf="!cargado; else divHotel">
+    <p>Espere...</p>
+  </div>
+  <ng-template #divHotel>
+    <img [src]="imagenes[0]" alt="" />
+    <p>Nombre: {{ hotel.nombre }}</p>
+    <p>descripción: {{hotel.descripcion}}</p>
+    <p>dirección: {{hotel.direccion}}</p>
+    <p>Puntuación reseñas : {{ hotel.puntuacion_resenas }}</p>
+    <p>Estrellas : {{ hotel.estrellas }}</p>
+    <p>Ciudad: {{ hotel.ciudad }}</p>
+    <p>Servicios: {{hotel.servicios}}</p>
+  </ng-template>
+  
 </section>
