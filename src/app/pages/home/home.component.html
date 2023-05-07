@@ -1,20 +1,24 @@
+<section class="mt-5 pt-4">
+  <div>caja para slider destinos</div>
 
-<div class="mt-5 pt-4">caja para slider destinos</div>
+  <app-buscar></app-buscar>
 
-<app-buscar></app-buscar>
+  <div #divResulBusq></div>
+  <div class="hotel-list-container" #divEticos>
+    <h3>Hoteles Éticos</h3>
 
-
-<div #divResulBusq></div>
-<div class="hotel-list-container" #divEticos>
-  <h3>Hoteles Éticos</h3> 
-
-  <p>caja para listado de hoteles éticos</p>
-  <ng-container *ngFor="let hotel of hoteles | slice : 0 : 3; let i = index">
-    <img [src]="imagenes[i]" alt="" />
-    <p>Nombre: {{ hotel.nombre }}</p>
-    <p>Puntuación reseñas : {{ hotel.puntuacion_resenas }}</p>
-    <p>Estrellas : {{ hotel.estrellas }}</p>
-    <p>Ciudad: {{ hotel.ciudad }}</p>
-  </ng-container>
-</div>
-
+    <p>caja para listado de hoteles éticos</p>
+    <ng-container *ngFor="let hotel of hoteles | slice : 0 : 3; let i = index">
+      <img [src]="imagenes[i]" alt="" />
+      <p>Nombre: {{ hotel.nombre }}</p>
+      <p>Puntuación reseñas : {{ hotel.puntuacion_resenas }}</p>
+      <p>Estrellas : {{ hotel.estrellas }}</p>
+      <p>Ciudad: {{ hotel.ciudad }}</p>
+      <a
+        [routerLink]="['/hotel', hotel._id]"
+        routerLinkActive="router-link-active"
+        >Detalles..</a
+      >
+    </ng-container>
+  </div>
+</section>

@@ -20,9 +20,11 @@ export class HotelService {
 
 
   obtenerHoteles (){
-    return this.http.get<Hotel[]>(this._apiUrlHoteles)
+    return this.http.get<any>(this._apiUrlHoteles)
   }
 
-
+  obtenerHotel (hotelId : string){
+    return this.http.get<any>(`${this._apiUrlHoteles}/${hotelId}`)
+  }
 
 }

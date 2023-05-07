@@ -16,7 +16,7 @@ export class HomeComponent  implements OnInit {
   private _hoteles: Hotel[] = [];
   private _imagenes: string[] = [];
  
-  
+
   constructor(public auth: AuthService, private hotelService: HotelService, private imagenService : ImagenService) { 
     this.getUserLogged();
   }
@@ -59,7 +59,7 @@ export class HomeComponent  implements OnInit {
       let usuario : Usuario = this.auth.getUsuario()
       console.log(usuario.data.user.nombre);
      } else {
-      console.log("No hay usuario logado");
+      console.log('No hay usuario logado');
      }
   }
 

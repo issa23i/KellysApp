@@ -10,6 +10,7 @@ import { RegisterComponent } from './register/register.component';
 import { FormsModule } from '@angular/forms';
 import { SharedModule } from "../shared/shared.module";
 import { BuscarComponent } from '../shared/buscar/buscar.component';
+import { RouterModule } from '@angular/router';
 
 
 
@@ -26,7 +27,8 @@ import { BuscarComponent } from '../shared/buscar/buscar.component';
     imports: [
         CommonModule,
         FormsModule,
-        SharedModule
+        SharedModule,
+        RouterModule
     ]
 })
 export class PagesModule { }
