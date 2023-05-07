@@ -1,29 +1,43 @@
 <!-- HEADER -->
-<ion-toolbar>
-  <div id="main-content">
-    <ion-header collapse="fade">
-      <ion-toolbar>
-        <ion-buttons slot="start">
-          <ion-menu-button></ion-menu-button>
-        
-           </ion-buttons>
-        <ion-title class="ion-text-center ion-padding">
-          <a href="/home">
-          <img
-            src="./../../../assets/images/logoKellysApp_black.svg"
-            alt="Logo"
-            id="logo"
-          /></a>
-        </ion-title>
-        <ion-icon id="persona" name="person-circle-outline" slot="end"></ion-icon>
-      </ion-toolbar>
-    </ion-header>
-  </div>
-</ion-toolbar>
+<ion-header>
+  <ion-toolbar>
+    <div id="main-content">
+      <ion-header collapse="fade">
+        <ion-toolbar>
+          <ion-buttons slot="start">
+            <ion-menu-button></ion-menu-button>
+          </ion-buttons>
+          <ion-title class="ion-text-center ion-padding">
+            <a href="/home">
+              <img
+                src="./../../../assets/images/logoKellysApp_black.svg"
+                alt="Logo"
+                id="logo"
+            /></a>
+          </ion-title>
+          <ion-buttons slot="end">
+            <ion-button>
+              <a [routerLink]="logado ? '/mi-perfil' : '/login'">
+                <ion-icon
+                  id="persona"
+                  name="person-circle-outline"
+                  slot="end"
+                ></ion-icon>
+              </a>
+            </ion-button>
+          </ion-buttons>
+        </ion-toolbar>
+      </ion-header>
+    </div>
+  </ion-toolbar>
+
+  
+</ion-header>
+
 
 <!-- MODAL AL SELECCIONAR EL MENÚ HAMBURGUESA -->
 <ion-menu contentId="main-content">
-  <ion-toolbar> 
+  <ion-toolbar>
     <ion-title>MENU</ion-title>
     <ion-buttons slot="end">
       <ion-button (click)="closeMenu()">

@@ -4,6 +4,7 @@ import { HeaderComponent } from './header/header.component';
 import { IonicModule } from '@ionic/angular';
 import { FormsModule } from '@angular/forms';
 import { BuscarComponent } from './buscar/buscar.component';
+import { RouterModule } from '@angular/router';
 
 
 
@@ -12,7 +13,8 @@ import { BuscarComponent } from './buscar/buscar.component';
   imports: [
     CommonModule,
     IonicModule,
-    FormsModule
+    FormsModule,
+    RouterModule
   ],
   exports: [HeaderComponent, BuscarComponent]
 })

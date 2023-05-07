@@ -1,10 +1,8 @@
 <section class="mt-5 pt-4">
   <div class="alert alert-info" *ngIf="!existe; else divPersona">
-    <p class="mt-5 pt-5">Espere por favor...</p>
+    <p>Espere por favor...</p>
   </div>
   <ng-template #divPersona>
-    <p class="mt-5 pt-5 alert alert-info">Bienvenid@ {{ persona.nombre }}!</p>
-
     <p>NIF</p>
     <p>{{ persona.nif }}</p>
     <p>NOMBRE</p>
