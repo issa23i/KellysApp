@@ -1,6 +1,6 @@
 <section class="mt-5 pt-4">
   <form class="custom-form" method="post">
-    <h1 class="pb-5">Login</h1>
+    <h1>Login</h1>
     <input
       type="email"
       [(ngModel)]="email"
@@ -17,4 +17,8 @@
     />
     <button type="submit" (click)="login()">Login</button>
   </form>
+  <p>¿Aún no tienes cuenta? <a
+    [routerLink]="['/registro']"
+    routerLinkActive="router-link-active"
+    >Regístrate aquí</a></p>
 </section>
