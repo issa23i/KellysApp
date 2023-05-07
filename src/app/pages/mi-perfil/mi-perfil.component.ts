@@ -1,6 +1,7 @@
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { PersonaService } from 'src/app/services/persona.service';
 import { Persona } from 'src/app/interfaces/persona';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-mi-perfil',
@@ -13,7 +14,8 @@ export class MiPerfilComponent implements OnInit {
   private _existe: Boolean = false;
 
   constructor(private personaService : PersonaService
-    , private changeDetector: ChangeDetectorRef) { }
+    , private changeDetector: ChangeDetectorRef
+    , private router: Router) { }
 
   ngOnInit(): void {
     console.log(this.personaService.obtenerPersona())
@@ -27,6 +29,8 @@ export class MiPerfilComponent implements OnInit {
       },
       error: (err) => {
         console.error(err, err.message);
+        console.log('No se ha iniciado sesión')
+        this.router.navigateByUrl('/login')
       },
     });
   }
