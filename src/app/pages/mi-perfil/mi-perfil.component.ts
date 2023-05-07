@@ -26,7 +26,7 @@ export class MiPerfilComponent implements OnInit {
         this.changeDetector.detectChanges()
       },
       error: (err) => {
-        console.error(err);
+        console.error(err, err.message);
       },
     });
   }

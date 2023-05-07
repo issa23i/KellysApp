@@ -50,14 +50,14 @@ export class HotelComponent implements OnInit {
                 this.imagenes.push(resp.data.url);
               },
               error: (err) => {
-                console.error(err, err.message, err.trace);
+                console.error(err, err.message);
               },
             });
           });
           this._cargado = true;
         },
         error: (err) => {
-          console.error(err, err.message, err.trace);
+          console.error(err, err.message);
         },
       });
     });

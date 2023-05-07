@@ -39,7 +39,7 @@ export class HomeComponent implements OnInit {
         });
       },
       error: (err) => {
-        console.error(err, err.message, err.trace);
+        console.error(err, err.message);
       },
     });
   }

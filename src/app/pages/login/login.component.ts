@@ -22,7 +22,7 @@ export class LoginComponent {
         this.router.navigateByUrl('/home');
       },
       error: (err) => {
-        console.error(err, err.message, err.trace);
+        console.error(err, err.message);
       },
     });
   }

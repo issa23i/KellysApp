@@ -24,9 +24,14 @@ export class BuscarComponent  implements OnInit {
   buscar() {
     console.log(this.parametrosBusqueda)
     this.buscarService.buscar(this.parametrosBusqueda)
-    .subscribe(resp => {
+    .subscribe({
+      next: resp => {
       console.log(resp);
-    })
+    },
+    error: err => {
+      console.error(err, err.message);
+    }
+  })
   }
 
 }
