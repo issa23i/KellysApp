@@ -53,6 +53,8 @@
         placeholder="Repeat the password"
         required
       />
+      <p *ngIf="passwordRegexError" class="mensaje-error">*La contraseña debe contener al menos una letra mayúscula, una minúscula, un número y tener al menos una longitud de 8 caracteres</p>
+      
       <button type="submit">Registro</button>
     </form>
     <p *ngIf="passwordError" class="mensaje-error">Las contraseñas no coinciden</p>

@@ -16,6 +16,7 @@ export class RegisterComponent   {
   password!: string;
   confirmPassword!: string;
   passwordError: boolean = false
+  passwordRegexError: boolean = false
 
   nif!: string;
   // nifEditado sirve para que compruebe que se compruebe
@@ -40,6 +41,15 @@ export class RegisterComponent   {
     } else {
       this.passwordError = false
     }
+
+    if (!this.passValidado(this.password)){
+      console.log("La contraseña no cumple con el criterio de validación. Debe tener al menos 8 caracteres y al menos 1 dígito, 1 letra minúscula y 1 letra mayúscula")
+      this.passwordRegexError = true
+      return
+    } else {
+      this.passwordRegexError = false
+    }
+    
     this.register()
     console.log('Solicitud enviada');
   }
@@ -61,6 +71,12 @@ export class RegisterComponent   {
     let regex = new RegExp(/^[0-9]{8}[A-Z]{1}$/)
     let valido = regex.test(dniValor) && this.dni(dniValor)
     return valido
+  }
+
+  passValidado = (pass : string) => {
+    // Al menos una minúscula, una mayúscula, un número, mínimo 8 caracteres
+    let regex : RegExp = new RegExp(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/)
+    return regex.test(pass)
   }
 
   register() {
