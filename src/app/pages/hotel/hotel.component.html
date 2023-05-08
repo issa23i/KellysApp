@@ -3,7 +3,14 @@
     <p>Espere...</p>
   </div>
   <ng-template #divHotel>
-    <img [src]="imagenes[0]" alt="" />
+        <ng-container *ngFor="let imagen of imagenes; let i=index">
+          
+            <img [src]="imagenes[i]" alt="" />
+        
+      
+        
+
+      </ng-container>
     <p>Nombre: {{ hotel.nombre }}</p>
     <p>descripción: {{hotel.descripcion}}</p>
     <p>dirección: {{hotel.direccion}}</p>
