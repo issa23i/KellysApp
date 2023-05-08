@@ -13,5 +13,5 @@ TODO: Ahora en home sólo se visualizan los tres primeros hoteles, hacer que cua
 TODO: Añadir validaciones al formulario de buscar, por ejemplo la fecha debe ser posterior a la actual
         y la fecha salida posterior a la fecha entrada.
         TODO: Para cada detalle hotel, hacer un slider con el array de imágenes
-        TODO: verificar que la contraseña en Registro tiene ocho dígitos, una letra mayúscula, una minúscula y un número
+
         

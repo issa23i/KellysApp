@@ -16,22 +16,55 @@ export class BuscarComponent  implements OnInit {
   };
 
 
+  errores = {
+    ciudad: '',
+    checkIn: '',
+    checkOut: '',
+    viajeros: ''
+  };
+
   constructor(private buscarService: BuscarService) { }
 
   ngOnInit() {
     
   }
   buscar() {
-    console.log(this.parametrosBusqueda)
-    this.buscarService.buscar(this.parametrosBusqueda)
-    .subscribe({
-      next: resp => {
-      console.log(resp);
-    },
-    error: err => {
-      console.error(err, err.message);
+    const fechaActual = new Date();
+    const checkIn = new Date(this.parametrosBusqueda.checkIn);
+    const checkOut = new Date(this.parametrosBusqueda.checkOut);
+
+    if (!this.parametrosBusqueda.ciudad.trim()) {
+      this.errores.ciudad = 'La ciudad es obligatoria';
+      return;
     }
-  })
+
+    if (checkIn < fechaActual) {
+      this.errores.checkIn = 'Check-In debe ser igual o posterior a la fecha actual.'
+      return;
+    }
+
+    if (checkOut <= checkIn) {
+      this.errores.checkOut = 'Check-Out debe ser igual o posterior a Check-In.'
+      return;
+    }
+
+    if (this.parametrosBusqueda.viajeros < 1 || this.parametrosBusqueda.viajeros > 9) {
+      this.errores.viajeros = 'El número de viajeros debe estar comprendido entre 1 y 9, ambos inclusive.'
+      return;
+    }
+
+    console.log(this.parametrosBusqueda);
+
+    this.buscarService.buscar(this.parametrosBusqueda)
+      .subscribe({
+        next: resp => {
+          console.log(resp);
+        },
+        error: err => {
+          console.error(err, err.message);
+        }
+      });
   }
+  
 
 }
