@@ -2,6 +2,7 @@ import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { PersonaService } from 'src/app/services/persona.service';
 import { Persona } from 'src/app/interfaces/persona';
 import { Router } from '@angular/router';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-mi-perfil',
@@ -14,6 +15,7 @@ export class MiPerfilComponent implements OnInit {
   private _existe: Boolean = false;
 
   constructor(private personaService : PersonaService
+    , private authService : AuthService
     , private changeDetector: ChangeDetectorRef
     , private router: Router) { }
 
@@ -35,6 +37,9 @@ export class MiPerfilComponent implements OnInit {
     });
   }
 
+  logout(){
+    this.authService.logout()
+  }
 
   get persona(){
     return this._persona

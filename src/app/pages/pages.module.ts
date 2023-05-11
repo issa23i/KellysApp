@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HomeComponent } from './home/home.component';
 import { HotelComponent } from './hotel/hotel.component';
@@ -29,6 +29,8 @@ import { RouterModule } from '@angular/router';
         FormsModule,
         SharedModule,
         RouterModule
-    ]
+    ], 
+    
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class PagesModule { }

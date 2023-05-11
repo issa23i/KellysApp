@@ -11,7 +11,9 @@ export class HeaderComponent  implements OnInit {
 
   @ViewChild(IonMenu) menu!: IonMenu;
 
-  logado : boolean = false
+  private _logado: boolean = false;
+ 
+  
 
   closeMenu() {
     this.menu.close();
@@ -22,5 +24,13 @@ export class HeaderComponent  implements OnInit {
   ngOnInit() {
     this.authService.getUsuario() ? this.logado = true : this.logado = false
   }
+
+  public get logado(): boolean {
+    return this.authService.getUsuario()
+  }
+  private set logado(value: boolean) {
+    this._logado = value;
+  }
+  
 
 }
