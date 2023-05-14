@@ -11,10 +11,11 @@ import { AuthInterceptorService } from './services/auth-interceptor.service';
 import { FormsModule } from '@angular/forms';
 import { PagesModule } from './pages/pages.module';
 import { CookieService } from 'ngx-cookie-service';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [AppComponent],
-  imports: [PagesModule,FormsModule, BrowserModule, IonicModule.forRoot(), AppRoutingModule, SharedModule, HttpClientModule],
+  imports: [ NgbModule, PagesModule,FormsModule, BrowserModule, IonicModule.forRoot(), AppRoutingModule, SharedModule, HttpClientModule],
   providers: [CookieService,{
     provide: HTTP_INTERCEPTORS,
     useClass: AuthInterceptorService,

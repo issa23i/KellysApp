@@ -4,6 +4,10 @@ $primary: #e71d73;
 $secondary: #1EE826;
 $letra_titulos:#5d5b53;
 $texto: #858585;
+$ion-header-height: 32px;
+ /** la altura del header **/
+
+
 
 /** IMPORTAR BOOTSTRAP **/
 @import '../node_modules/bootstrap/scss/bootstrap.scss';
@@ -60,12 +64,6 @@ $texto: #858585;
     font-size: 21px;
   }
 
-  /* SCROLL EN HOTELES */
-  section {
-    max-height: 500px; /* altura máxima del contenedor */
-    overflow: auto; /* activar el scroll vertical */
-  }
-
   /* TEXTO SOBRE IMÁGENES */
   .etiqueta-imagen {
     position: absolute;
@@ -79,4 +77,7 @@ $texto: #858585;
     border-radius: 8px;
     max-width: fit-content;
   }
- 
+
+  .padding-top-save-header{
+    padding-top:$ion-header-height!important;
+  }

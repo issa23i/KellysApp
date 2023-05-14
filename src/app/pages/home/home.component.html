@@ -1,39 +1,41 @@
-
-<section class="mt-5 pt-4">
-  <swiper-container>
-    <swiper-slide>
-      <ion-img src='../../../assets/images/sevilla/2400-landscape-view-of-plaza-de-espana.jpg'></ion-img>
-      <p class="etiqueta-imagen">Sevilla</p>
-    </swiper-slide>
-    <swiper-slide>
-      <ion-img src='../../../assets/images/sevilla/2400-real-alcazar-de-sevilla-baths.jpg'></ion-img>
-      <p class="etiqueta-imagen">Sevilla</p>
-    </swiper-slide>
-    <swiper-slide>
-      <ion-img src='../../../assets/images/sevilla/callebetis.jpg'></ion-img>
-      <p class="etiqueta-imagen">Sevilla</p>
-    </swiper-slide>
-    <swiper-slide>
-      <ion-img src='../../../assets/images/sevilla/santacruz.jpg'></ion-img>
-      <p class="etiqueta-imagen">Sevilla</p>
-    </swiper-slide>
-    <swiper-slide>
-      <ion-img src='../../../assets/images/sevilla/catedral.jpg'></ion-img>
-      <p class="etiqueta-imagen">Sevilla</p>
-    </swiper-slide>
-  </swiper-container>
-
+<ion-content class="ion-padding">
+  <div class="padding-top-save-header">
+    <swiper-container>
+      <swiper-slide>
+        <ion-img
+          src="../../../assets/images/sevilla/2400-landscape-view-of-plaza-de-espana.jpg"
+        ></ion-img>
+        <p class="etiqueta-imagen">Sevilla</p>
+      </swiper-slide>
+      <swiper-slide>
+        <ion-img
+          src="../../../assets/images/sevilla/2400-real-alcazar-de-sevilla-baths.jpg"
+        ></ion-img>
+        <p class="etiqueta-imagen">Sevilla</p>
+      </swiper-slide>
+      <swiper-slide>
+        <ion-img src="../../../assets/images/sevilla/callebetis.jpg"></ion-img>
+        <p class="etiqueta-imagen">Sevilla</p>
+      </swiper-slide>
+      <swiper-slide>
+        <ion-img src="../../../assets/images/sevilla/santacruz.jpg"></ion-img>
+        <p class="etiqueta-imagen">Sevilla</p>
+      </swiper-slide>
+      <swiper-slide>
+        <ion-img src="../../../assets/images/sevilla/catedral.jpg"></ion-img>
+        <p class="etiqueta-imagen">Sevilla</p>
+      </swiper-slide>
+    </swiper-container>
+  </div>
 
   <app-buscar></app-buscar>
 
   <div #divResulBusq></div>
   <div class="hotel-list-container" #divEticos>
     <h3>Hoteles Éticos</h3>
-    
+
     <p>caja para listado de hoteles éticos</p>
     <ng-container *ngFor="let hotel of hoteles | slice : 0 : 3; let i = index">
-      
-        
       <p>Nombre: {{ hotel.nombre }}</p>
       <p>Puntuación reseñas : {{ hotel.puntuacion_resenas }}</p>
       <p>Estrellas : {{ hotel.estrellas }}</p>
@@ -45,5 +47,4 @@
       >
     </ng-container>
   </div>
-  
-</section>
+</ion-content>
