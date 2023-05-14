@@ -4,7 +4,7 @@ $primary: #e71d73;
 $secondary: #1EE826;
 $letra_titulos:#5d5b53;
 $texto: #858585;
-$ion-header-height: 32px;
+$ion-header-height: calc(2em + 32px);
  /** la altura del header **/
 
 
@@ -78,6 +78,7 @@ $ion-header-height: 32px;
     max-width: fit-content;
   }
 
+  /* QUE NO SE SOLAPE EL HEADER SOBRE EL CONTENT*/
   .padding-top-save-header{
-    padding-top:$ion-header-height!important;
+    padding-top:6.5vh!important;
   }
