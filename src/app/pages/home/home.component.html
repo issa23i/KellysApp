@@ -28,7 +28,10 @@
 
   <app-buscar></app-buscar>
 
-  <div #divResulBusq></div>
+  <ng-container *ngFor="let reserva of resultadoBusqueda">
+    <p>{{reserva.hotel}}</p>
+  </ng-container>
+  
   <div class="hotel-list-container" #divEticos>
     <h3>Hoteles Éticos</h3>
     

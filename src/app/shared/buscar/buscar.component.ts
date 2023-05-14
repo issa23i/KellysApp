@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { ParamBuscar } from 'src/app/interfaces/param-buscar';
 import { BuscarService } from 'src/app/services/buscar.service';
 
@@ -8,6 +9,7 @@ import { BuscarService } from 'src/app/services/buscar.service';
   styleUrls: ['./buscar.component.scss'],
 })
 export class BuscarComponent  implements OnInit {
+
   parametrosBusqueda: ParamBuscar = {
     ciudad: '',
     checkIn: new Date(),
@@ -55,7 +57,8 @@ export class BuscarComponent  implements OnInit {
 
     console.log(this.parametrosBusqueda);
 
-    this.buscarService.buscar(this.parametrosBusqueda)
+    this.buscarService.parametrosBusqueda = this.parametrosBusqueda
+    this.buscarService.buscar()
       .subscribe({
         next: resp => {
           console.log(resp);

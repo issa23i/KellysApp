@@ -5,6 +5,7 @@ import { HotelService } from '../../services/hotel.service';
 import { Hotel } from 'src/app/interfaces/hotel';
 import { ImagenService } from 'src/app/services/imagen.service';
 import { BuscarComponent } from 'src/app/shared/buscar/buscar.component';
+import { BuscarService } from '../../services/buscar.service';
 
 @Component({
   selector: 'app-home',
@@ -18,7 +19,8 @@ export class HomeComponent implements OnInit {
   constructor(
     public auth: AuthService,
     private hotelService: HotelService,
-    private imagenService: ImagenService
+    private imagenService: ImagenService,
+    private buscarService: BuscarService
   ) {
     this.getUserLogged();
   }
@@ -63,5 +65,9 @@ export class HomeComponent implements OnInit {
     } else {
       console.log('No hay usuario logado');
     }
+  }
+
+  get resultadoBusqueda(){
+    return this.buscarService.resultadosBusqueda;
   }
 }

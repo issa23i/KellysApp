@@ -1,20 +1,23 @@
 <form (ngSubmit)="buscar()">
-  <label for="ciudad">Ciudad:</label>
-  <input type="text" name="ciudad" [(ngModel)]="parametrosBusqueda.ciudad">
-  <p *ngIf="errores.ciudad" class="mensaje-error">{{errores.ciudad}}</p>
+  <ion-item>
+    <ion-icon name="location-outline" color="primary" slot="start" ></ion-icon>
+  <ion-input label="Destino" labelPlacement="stacked" type="text" name="ciudad" [(ngModel)]="parametrosBusqueda.ciudad" required></ion-input>
+  
+</ion-item>
+<p *ngIf="errores.ciudad" class="mensaje-error">{{errores.ciudad}}</p>
+<ion-item>
+  <ion-icon name="calendar-outline" color="primary" slot="start" ></ion-icon>
+  <ion-input label="Entrada" labelPlacement="stacked" type="date" name="checkIn" [(ngModel)]="parametrosBusqueda.checkIn" required></ion-input>
 
-  <label for="checkIn">Check-In:</label>
-  <input type="date" name="checkIn" [(ngModel)]="parametrosBusqueda.checkIn">
-  <p *ngIf="errores.checkIn" class="mensaje-error">{{errores.checkIn}}</p>
-
-  <label for="checkOut">Check-Out:</label>
-  <input type="date" name="checkOut" [(ngModel)]="parametrosBusqueda.checkOut">
-  <p *ngIf="errores.checkOut" class="mensaje-error">{{errores.checkOut}}</p>
-
-  <label for="viajeros">Número de viajeros:</label>
-  <input type="number" name="viajeros" [(ngModel)]="parametrosBusqueda.viajeros">
+  <ion-input label="Salida" labelPlacement="stacked" type="date" name="checkOut" [(ngModel)]="parametrosBusqueda.checkOut" required></ion-input>
+ </ion-item>
+ <p *ngIf="errores.checkIn" class="mensaje-error">{{errores.checkIn}}</p>
+ <p *ngIf="errores.checkOut" class="mensaje-error">{{errores.checkOut}}</p>
+<ion-item>
+  <ion-icon name="bed-outline" slot="start" color="primary"></ion-icon>
+  <ion-input label="Viajeros" type="number" labelPlacement="stacked" name="viajeros" [(ngModel)]="parametrosBusqueda.viajeros" max="9" min="1" required></ion-input>
   <p *ngIf="errores.viajeros" class="mensaje-error">{{errores.viajeros}}</p>
-
-  <button type="submit">Buscar</button>
+</ion-item>
+  
+  <ion-button  shape="square" block color="primary" expand="block" type="submit">Buscar</ion-button>
 </form>
-

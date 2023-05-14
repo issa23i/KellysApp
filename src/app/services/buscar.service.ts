@@ -10,22 +10,30 @@ import { Observable } from 'rxjs';
 export class BuscarService {
 
   private _parametrosBusqueda!: ParamBuscar;
+  private _resultadosBusqueda: any[] = [];
   
+  
+
 
   private _apiUrlBuscar : string = `${environment.apiUrl}/buscar`;
 
   constructor(private http: HttpClient) { }
 
 
-  buscar(parametrosBusqueda: ParamBuscar): Observable<any>{
-    this._parametrosBusqueda = parametrosBusqueda;
+  buscar(): Observable<any>{
   
-    let checkIn = new Date(parametrosBusqueda.checkIn);
-    let checkOut = new Date(parametrosBusqueda.checkOut);
   
-
-  console.log(parametrosBusqueda)
-    return this.http.post<any>(this._apiUrlBuscar, parametrosBusqueda);
+    this.http.post<any>(this._apiUrlBuscar, this.parametrosBusqueda)
+    .subscribe({
+      next: resp => {
+        this._resultadosBusqueda = resp
+        console.log(resp);
+      },
+      error: err => {
+        console.error(err, err.message);
+      }
+    });
+    return this.http.post<any>(this._apiUrlBuscar, this.parametrosBusqueda);
   }
 
 
@@ -34,5 +42,11 @@ export class BuscarService {
   }
   public set parametrosBusqueda(value: ParamBuscar) {
     this._parametrosBusqueda = value;
+  }
+  public get resultadosBusqueda(): any[] {
+    return this._resultadosBusqueda;
+  }
+  public set resultadosBusqueda(value: any[]) {
+    this._resultadosBusqueda = value;
   }
 }

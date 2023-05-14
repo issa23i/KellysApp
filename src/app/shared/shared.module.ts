@@ -2,9 +2,10 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HeaderComponent } from './header/header.component';
 import { IonicModule } from '@ionic/angular';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BuscarComponent } from './buscar/buscar.component';
 import { RouterModule } from '@angular/router';
+import { NgbDatepicker } from '@ng-bootstrap/ng-bootstrap';
 
 
 
@@ -14,7 +15,9 @@ import { RouterModule } from '@angular/router';
     CommonModule,
     IonicModule,
     FormsModule,
-    RouterModule
+    RouterModule,
+    ReactiveFormsModule,
+    NgbDatepicker
   ],
   exports: [HeaderComponent, BuscarComponent]
 })
