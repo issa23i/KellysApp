@@ -67,7 +67,5 @@ export class HomeComponent implements OnInit {
     }
   }
 
-  get resultadoBusqueda(){
-    return this.buscarService.resultadosBusqueda;
-  }
+  
 }

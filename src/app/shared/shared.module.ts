@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HeaderComponent } from './header/header.component';
 import { IonicModule } from '@ionic/angular';
@@ -6,19 +6,21 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BuscarComponent } from './buscar/buscar.component';
 import { RouterModule } from '@angular/router';
 import { NgbDatepicker } from '@ng-bootstrap/ng-bootstrap';
+import { ResultadoBusquedaComponent } from './resultado-busqueda/resultado-busqueda.component';
 
 
 
 @NgModule({
-  declarations: [HeaderComponent, BuscarComponent],
+  declarations: [HeaderComponent, BuscarComponent, ResultadoBusquedaComponent],
   imports: [
     CommonModule,
     IonicModule,
     FormsModule,
     RouterModule,
     ReactiveFormsModule,
-    NgbDatepicker
+    NgbDatepicker,
   ],
-  exports: [HeaderComponent, BuscarComponent]
+  exports: [HeaderComponent, BuscarComponent, ResultadoBusquedaComponent],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class SharedModule { }

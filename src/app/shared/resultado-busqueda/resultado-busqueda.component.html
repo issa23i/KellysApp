@@ -1,0 +1,6 @@
+<div *ngIf="resultadoBusqueda">
+  <ng-container *ngFor="let reserva of resultadoBusqueda">
+    <p>{{ reserva.hotel }}</p>
+    <p>{{ reserva.precioTotal }}</p>
+  </ng-container>
+</div>

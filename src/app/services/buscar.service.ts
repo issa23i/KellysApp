@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { ParamBuscar } from '../interfaces/param-buscar';
 import { Observable } from 'rxjs';
+import { ResultadoBusqueda } from '../interfaces/resultado-busqueda';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +11,7 @@ import { Observable } from 'rxjs';
 export class BuscarService {
 
   private _parametrosBusqueda!: ParamBuscar;
-  private _resultadosBusqueda: any[] = [];
+  private _resultadosBusqueda: ResultadoBusqueda[] = [];
   
   
 
@@ -25,7 +26,7 @@ export class BuscarService {
   
     this.http.post<any>(this._apiUrlBuscar, this.parametrosBusqueda)
     .subscribe({
-      next: resp => {
+      next: (resp : ResultadoBusqueda[]) => {
         this._resultadosBusqueda = resp
         console.log(resp);
       },
