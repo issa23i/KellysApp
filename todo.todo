@@ -14,4 +14,4 @@ TODO: Añadir validaciones al formulario de buscar, por ejemplo la fecha debe se
         TODO: Para cada detalle hotel, hacer un slider con el array de imágenes
 
         
-/// TODO: SLIDER CON SWIPER EN HOME COMPONENT
+/// TODO:       comprobar resultado-busqueda.component.html
