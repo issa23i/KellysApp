@@ -1,5 +1,5 @@
 export interface Habitacion {
-    _id:        string;
+    _id?:        string;
     hotel:      string;
     num_plazas: number;
     tipo_cama:  string;

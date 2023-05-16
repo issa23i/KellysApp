@@ -9,19 +9,23 @@ import { CookieService } from 'ngx-cookie-service';
 })
 export class AuthInterceptorService implements HttpInterceptor {
 
-  constructor(private AuthService: AuthService) { }
+  private token: string = ''; // Almacena el valor del token
+
+  constructor(private authService: AuthService) { }
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    console.log(this.AuthService)
-    const token = this.AuthService.getToken()
-    console.log('Token:', token); // Imprime el valor del token
-    if(token){
+    if (!this.token) {
+      this.token = this.authService.getToken(); // Obtiene el token solo si no está almacenado
+    }
+
+    if (this.token) {
       req = req.clone({
         setHeaders: {
-          authorization: `Bearer ${token}`
+          authorization: `Bearer ${this.token}`
         }
-      })
+      });
     }
-    return next.handle(req)
+
+    return next.handle(req);
   }
 }

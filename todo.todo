@@ -13,5 +13,4 @@ TODO: Añadir validaciones al formulario de buscar, por ejemplo la fecha debe se
         y la fecha salida posterior a la fecha entrada.
         TODO: Para cada detalle hotel, hacer un slider con el array de imágenes
 
-        
-/// TODO:       comprobar resultado-busqueda.component.html
+        TODO: Encontrar fallo miles de repeticiones

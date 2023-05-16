@@ -4,8 +4,6 @@ import { AuthService } from 'src/app/services/auth.service';
 import { HotelService } from '../../services/hotel.service';
 import { Hotel } from 'src/app/interfaces/hotel';
 import { ImagenService } from 'src/app/services/imagen.service';
-import { BuscarComponent } from 'src/app/shared/buscar/buscar.component';
-import { BuscarService } from '../../services/buscar.service';
 
 @Component({
   selector: 'app-home',
@@ -19,8 +17,7 @@ export class HomeComponent implements OnInit {
   constructor(
     public auth: AuthService,
     private hotelService: HotelService,
-    private imagenService: ImagenService,
-    private buscarService: BuscarService
+    private imagenService: ImagenService
   ) {
     this.getUserLogged();
   }

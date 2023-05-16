@@ -1,11 +1,10 @@
-<div *ngIf="resultadoBusqueda">
-  <ng-container *ngFor="let reserva of resultadoBusqueda">
-    <div *ngIf="datosCombinados">
-      <div class="card" *ngFor="let datos of datosCombinados">
+
+      <div class="card" *ngFor="let datos of obtenerDatosCombinados">
+       
         <div class="card-header">
           <!-- Mostrar información del hotel -->
-          <h4>{{ datos.hotel.nombre }}</h4>
-          <p>{{ datos.hotel.descripcion }}</p>
+          <h4>Nombre de Hotel {{ datos.hotel.nombre }}</h4>
+          <p>Vistas de la habitación {{ datos.habitacion.vistas}}</p>
         </div>
         <div class="card-body">
           <!-- Mostrar información de la reserva -->
@@ -16,6 +15,3 @@
           <p>Precio Total: {{ datos.reserva.precioTotal }}</p>
         </div>
       </div>
-    </div>
-  </ng-container>
-</div>

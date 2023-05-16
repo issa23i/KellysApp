@@ -12,6 +12,6 @@ export class HabitacionService {
   constructor(private http: HttpClient) { }
 
   obtenerHabitacion (habitacionId : string){
-    return this.http.get<any>(`${this._apiUrlHabitaciones}`)
+    return this.http.get<any>(`${this._apiUrlHabitaciones}/${habitacionId}`)
 }
 }
