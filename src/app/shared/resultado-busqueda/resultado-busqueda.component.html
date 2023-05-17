@@ -1,17 +1,17 @@
 
-      <div class="card" *ngFor="let datos of obtenerDatosCombinados">
-       
-        <div class="card-header">
-          <!-- Mostrar información del hotel -->
-          <h4>Nombre de Hotel {{ datos.hotel.nombre }}</h4>
-          <p>Vistas de la habitación {{ datos.habitacion.vistas}}</p>
-        </div>
-        <div class="card-body">
-          <!-- Mostrar información de la reserva -->
-          <p>Fecha Check-In: {{ datos.reserva.fechaCheckin }}</p>
-          <p>Fecha Check-Out: {{ datos.reserva.fechaCheckout }}</p>
-          <!-- Mostrar información de la habitación -->
-          <p>Tipo de Habitación: {{ datos.habitacion.tipo }}</p>
-          <p>Precio Total: {{ datos.reserva.precioTotal }}</p>
-        </div>
-      </div>
+
+  <ng-container class="card" *ngFor="let datos of resultadoBusqueda">
+    <div class="card-header">
+      <!-- Mostrar información del hotel -->
+      <h4>Nombre de Hotel {{ datos.nombreHotel }}</h4>
+      <p>Estrellas del hotel {{ datos.estrellas }}</p>
+    </div>
+    <div class="card-body">
+      <!-- Mostrar información de la reserva -->
+      <p>Fecha Check-In: {{ datos.fechaCheckin }}</p>
+      <p>Fecha Check-Out: {{ datos.fechaCheckout }}</p>
+      <!-- Mostrar información de la habitación -->
+      <p>ID de Habitación: {{ datos.habitacionId }}</p>
+      <p>Precio Total: {{ datos.precioTotal }}</p>
+    </div>
+  </ng-container>

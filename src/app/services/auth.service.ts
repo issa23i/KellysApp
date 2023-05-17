@@ -52,7 +52,7 @@ export class AuthService {
     if (this.cookies.check('usuario')) {
       return JSON.parse(this.cookies.get('usuario'));
     }
-    //console.log('no hay usuario');
+    console.log('no hay usuario');
     return null;
   }
 

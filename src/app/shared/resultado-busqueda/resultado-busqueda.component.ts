@@ -13,6 +13,10 @@ import { Habitacion } from 'src/app/interfaces/habitacion';
   styleUrls: ['./resultado-busqueda.component.scss'],
 })
 export class ResultadoBusquedaComponent implements OnInit {
+
+  /* cargado : boolean = false
+  datosCombinados : any [] = [] */
+
   constructor(
     private buscarService: BuscarService,
     private hotelService: HotelService,
@@ -25,12 +29,17 @@ export class ResultadoBusquedaComponent implements OnInit {
   }
 
   get resultadoBusqueda() {
+    console.log(this.buscarService.resultadosBusqueda)
     return this.buscarService.resultadosBusqueda;
   }
-
+/*
+  iteracion = 0
   get obtenerDatosCombinados() {
     const datosCombinados: any[] = [];
 
+    this.iteracion++
+      console.log('iteración: ', this.iteracion)
+    
     this.resultadoBusqueda.forEach((resultado) => {
       const hotelId = resultado.hotel;
       const habitacionId = resultado.habitacion;
@@ -55,12 +64,11 @@ export class ResultadoBusquedaComponent implements OnInit {
         imagenes: [],
       };
  
+       
       // obtener datos de la habitacion
       this.habitacionService.obtenerHabitacion(habitacionId).subscribe({
         next: (habitacionData) => {
           habitacion = habitacionData.data;
-          console.log('habitacion');
-          console.log(habitacion.vistas);
         },
         error: (errorHotelData) => {
           console.error(errorHotelData);
@@ -70,14 +78,13 @@ export class ResultadoBusquedaComponent implements OnInit {
       this.hotelService.obtenerHotel(hotelId).subscribe({
         next: (hotelData) => {
           hotel = hotelData.data;
-          console.log('hotel');
-          console.log(hotel.nombre);
         },
         error: (errorHotelData) => {
           console.error(errorHotelData);
         },
       });
      
+      this.cargado = true
       const datosCombined = {
         hotel: hotel,
         reserva: resultado,
@@ -85,6 +92,7 @@ export class ResultadoBusquedaComponent implements OnInit {
       };
       datosCombinados.push(datosCombined);
     });
-    return datosCombinados;
-  }
+    this.datosCombinados = datosCombinados
+     return datosCombinados;
+  } */
 }

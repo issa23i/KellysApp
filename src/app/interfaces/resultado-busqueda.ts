@@ -1,10 +1,14 @@
 export interface ResultadoBusqueda {
-    hotel:         string;
+    hotelId:       string;
+    nombreHotel?:   string;
+    estrellas?:     number;
+    imagen:     string;
     fechaCheckin:  Date;
     fechaCheckout: Date;
     numPlazas:     number;
-    habitacion:    string;
-    aceptada:      boolean;
+    vistas?:        string;
+    tipoCama?:      string;
+    habitacionId:  string;
     precioTotal:   number;
 }
 

@@ -22,11 +22,11 @@ export class ReservaService {
     if(usuarioId){
       let reserva : Reserva = {
       cliente : usuarioId,
-      hotel: resultadoBusqueda.hotel,
+      hotel: resultadoBusqueda.hotelId,
       fechaCheckin: resultadoBusqueda.fechaCheckin,
       fechaCheckout: resultadoBusqueda.fechaCheckout,
       numPlazas: resultadoBusqueda.numPlazas,
-      habitacion: resultadoBusqueda.habitacion,
+      habitacion: resultadoBusqueda.habitacionId,
       aceptada: false
       }
       this._reserva = reserva

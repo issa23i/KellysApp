@@ -13,7 +13,10 @@ export class AuthInterceptorService implements HttpInterceptor {
 
   constructor(private authService: AuthService) { }
 
+  contadorInterceptar = 0
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+    this.contadorInterceptar++
+    console.log('interceptar '+ this.contadorInterceptar + ' veces')
     if (!this.token) {
       this.token = this.authService.getToken(); // Obtiene el token solo si no está almacenado
     }
