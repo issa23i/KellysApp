@@ -14,4 +14,18 @@
       <p>ID de Habitación: {{ datos.habitacionId }}</p>
       <p>Precio Total: {{ datos.precioTotal }}</p>
     </div>
+    <ion-card>
+      <img [alt]=datos.nombreHotel [src]=datos.imagen />
+      <ion-card-header>
+        <ion-card-title>{{ datos.precioTotal }} €</ion-card-title>
+        <ion-card-subtitle>{{ datos.nombreHotel }}</ion-card-subtitle>
+      </ion-card-header>
+    
+      <ion-card-content>
+        Here's a small text description for the card content. Nothing more, nothing less.
+      </ion-card-content>
+      <ion-button (click)="reservar(datos.habitacionId)" color="primary" expand="block"  shape="round">
+        Reservar
+      </ion-button>
+    </ion-card>
   </ng-container>

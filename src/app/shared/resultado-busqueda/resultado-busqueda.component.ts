@@ -18,81 +18,47 @@ export class ResultadoBusquedaComponent implements OnInit {
   datosCombinados : any [] = [] */
 
   constructor(
-    private buscarService: BuscarService,
-    private hotelService: HotelService,
-    private imagenService: ImagenService,
-    private habitacionService: HabitacionService,
-    private reservaService: ReservaService
+    private buscarService: BuscarService
   ) {}
 
   ngOnInit() {
   }
 
+  /**
+   * devolver sólo una habitación por hotel (la más barata)
+   */
   get resultadoBusqueda() {
-    console.log(this.buscarService.resultadosBusqueda)
-    return this.buscarService.resultadosBusqueda;
+    let resultados = this.buscarService.resultadosBusqueda;
+
+    // Crear un mapa para almacenar los objetos únicos con hotelId como clave
+    const mapaResultados = new Map();
+
+    // Iterar sobre los resultados y mantener solo el objeto con precioTotal más bajo por hotelId
+    for (const obj of resultados) {
+      const { hotelId, precioTotal } = obj;
+      
+      // Si hotelId ya existe en el mapa, comprobar si el precioTotal es más bajo
+      if (mapaResultados.has(hotelId)) {
+        const objetoExistente = mapaResultados.get(hotelId);
+        
+        // Si el precioTotal es más bajo, reemplazar el objeto existente en el mapa
+        if (precioTotal < objetoExistente.precioTotal) {
+          mapaResultados.set(hotelId, obj);
+        }
+      } else {
+        // Si hotelId no existe en el mapa, agregar el objeto al mapa
+        mapaResultados.set(hotelId, obj);
+      }
+    }
+
+    // Obtener los valores del mapa como un array de objetos únicos con hotelId
+    const resultadosFiltrados = Array.from(mapaResultados.values());
+
+    console.log(resultadosFiltrados)
+    return resultadosFiltrados;
   }
-/*
-  iteracion = 0
-  get obtenerDatosCombinados() {
-    const datosCombinados: any[] = [];
 
-    this.iteracion++
-      console.log('iteración: ', this.iteracion)
-    
-    this.resultadoBusqueda.forEach((resultado) => {
-      const hotelId = resultado.hotel;
-      const habitacionId = resultado.habitacion;
-
-      let hotel: Hotel = {
-        nombre: '',
-        direccion: '',
-        ciudad: '',
-        descripcion: '',
-        servicios: [],
-        tieneSello: true,
-        imagenes: [],
-        puntuacion_resenas: 1,
-        estrellas: 1,
-      };
-
-      let habitacion: Habitacion = {
-        hotel: '',
-        num_plazas: 1,
-        tipo_cama: '',
-        vistas: '',
-        imagenes: [],
-      };
- 
-       
-      // obtener datos de la habitacion
-      this.habitacionService.obtenerHabitacion(habitacionId).subscribe({
-        next: (habitacionData) => {
-          habitacion = habitacionData.data;
-        },
-        error: (errorHotelData) => {
-          console.error(errorHotelData);
-        },
-      });
-      // Obtener datos del hotel
-      this.hotelService.obtenerHotel(hotelId).subscribe({
-        next: (hotelData) => {
-          hotel = hotelData.data;
-        },
-        error: (errorHotelData) => {
-          console.error(errorHotelData);
-        },
-      });
-     
-      this.cargado = true
-      const datosCombined = {
-        hotel: hotel,
-        reserva: resultado,
-        habitacion: habitacion,
-      };
-      datosCombinados.push(datosCombined);
-    });
-    this.datosCombinados = datosCombinados
-     return datosCombinados;
-  } */
+  reservar(habitacionId : string){
+    // TODO: lógica de reservar
+  }
 }
