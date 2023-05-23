@@ -1,1 +1,29 @@
- 
+.pico {
+    width: 40px;
+    height: 30px;
+    background-color: #f0f0f0;
+    position: relative;
+    border-radius: 6px;
+    text-align: center;
+  }
+  
+  .pico::before {
+    content: "";
+    position: absolute;
+    top:10px;
+    left: -1px;
+    z-index: -2;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 0 30px 30px 0;
+    border-color: transparent #1EE826 transparent transparent;
+  }
+
+  a{
+    text-decoration: none;
+  }
+
+  .italica{
+    font-style: italic;
+  }

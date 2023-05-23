@@ -4,7 +4,7 @@ $primary: #e71d75;
 $secondary: #1EE826;
 $letra_titulos:#5d5b53;
 $texto: #858585;
-
+$blanco: #fff;
 
 
 
@@ -67,6 +67,9 @@ $texto: #858585;
     padding-top: 1em;
   }
   /* COLORES */
+  .blanco{
+    color: $blanco;
+  }
   :root {
     --ion-color-primary: #e71d75;
     --ion-color-primary-rgb: 231,29,117;
@@ -96,7 +99,7 @@ $texto: #858585;
     --ion-color-success-shade: #28ba62;
     --ion-color-success-tint: #42d77d;
   
-    --ion-color-warning: #ffc409;
+    --ion-color-warning: #FEDC29;
     --ion-color-warning-rgb: 255,196,9;
     --ion-color-warning-contrast: #000000;
     --ion-color-warning-contrast-rgb: 0,0,0;
@@ -124,6 +127,8 @@ $texto: #858585;
     --ion-color-light-shade: #757575;
     --ion-color-light-tint: #919191;
   
+
+
   }
   
   /* TEXTO SOBRE IMÁGENES */

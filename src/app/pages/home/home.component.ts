@@ -28,13 +28,17 @@ export class HomeComponent implements OnInit {
         this._hoteles = resp.data;
 
         this._hoteles.forEach((hotel) => {
-          // obtener la primera imagen de cada hotel
-          this.imagenService
-            .obtenerImagen(hotel.imagenes[0])
-            .subscribe((resp) => {
-              console.log(resp.data.url);
-              this._imagenes.push(resp.data.url);
-            });
+
+          let images = hotel.imagenes
+          for (let i = 0; i < images.length; i++) {
+            
+            this.imagenService.obtenerImagen(hotel.imagenes[i])
+            .subscribe((resp: any) => {
+              // cambiar la id de mongoDB por la url de la imagen
+              hotel.imagenes[i] = resp.data.url
+            })
+            
+          }
         });
       },
       error: (err) => {
@@ -64,5 +68,13 @@ export class HomeComponent implements OnInit {
     }
   }
 
+  /** sólo recoge el número de estrellas de un hotel y devuelve un array para el bucle */
+  getEstrellas(numEstrellas : number){
+    let estrellas : number[] = []
+    for (let i = 0; i < numEstrellas; i++) {
+      estrellas.push(i)
+    }
+    return estrellas
+  }
   
 }
