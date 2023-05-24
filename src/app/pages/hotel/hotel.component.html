@@ -4,14 +4,34 @@
       <p>Espere...</p>
     </div>
     <ng-template #divHotel>
-      <ng-container *ngFor="let imagen of imagenes; let i = index">
-        <img [src]="imagenes[i]" alt="" />
-      </ng-container>
-      <p>Nombre: {{ hotel.nombre }}</p>
-      <p>descripción: {{ hotel.descripcion }}</p>
-      <p>dirección: {{ hotel.direccion }}</p>
-      <p>Puntuación reseñas : {{ hotel.puntuacion_resenas }}</p>
-      <p>Estrellas : {{ hotel.estrellas }}</p>
+      <swiper-container>
+        <swiper-slide *ngFor="let imagen of imagenes; let i = index">
+          <ion-img [src]="imagenes[i]" alt="hotel.nombre" />
+        </swiper-slide>
+      </swiper-container>
+
+      <!--Título y opiniones-->
+      <div class="m-3">
+        <h1 class="d-inline">{{ hotel.nombre }}</h1>
+        <div class="bg-secondary ion-float-end blanco p-1 pico d-inline">
+          {{ hotel.puntuacion_resenas }}
+        </div>
+      </div>
+
+      <!--Estrellas y Mapa-->
+      <div class="m-3">
+        <div class="ion-margin-start ion-padding-start ion-margin-bottom d-inline">
+          <div
+            class="d-inline"
+            *ngFor="let estrella of getEstrellas(hotel.estrellas)"
+          >
+            <ion-icon name="star" color="warning"></ion-icon>
+          </div>
+        </div>
+        <div class="d-inline ion-float-end ion-margin-end">{{ hotel.direccion }}</div>
+      </div>
+
+      <p>{{ hotel.descripcion }}</p>
       <p>Ciudad: {{ hotel.ciudad }}</p>
       <p>Servicios: {{ hotel.servicios }}</p>
     </ng-template>

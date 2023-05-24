@@ -39,7 +39,11 @@
         routerLinkActive="router-link-active"
         >
       <ion-card>
-        <ion-img [alt]=hotel.nombre [src]=hotel.imagenes[0] />
+        <swiper-container>
+          <swiper-slide *ngFor="let img of hotel.imagenes" [loop]="true">
+            <ion-img [alt]=hotel.nombre [src]=img />
+          </swiper-slide>
+        </swiper-container>
         <ion-card-header>
           <ion-card-title>
             <div class="d-inline" *ngFor="let estrella of getEstrellas(hotel.estrellas)">

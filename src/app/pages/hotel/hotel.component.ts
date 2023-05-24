@@ -81,4 +81,13 @@ export class HotelComponent implements OnInit {
   public set imagenes(value: Imagen[]) {
     this._imagenes = value;
   }
+
+  /** sólo recoge el número de estrellas de un hotel y devuelve un array para el bucle */
+  getEstrellas(numEstrellas : number){
+    let estrellas : number[] = []
+    for (let i = 0; i < numEstrellas; i++) {
+      estrellas.push(i)
+    }
+    return estrellas
+  }
 }
