@@ -1,17 +1,19 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
+import { Habitacion } from '../interfaces/habitacion';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class HabitacionService {
-  private _apiUrlHabitaciones : string = `${environment.apiUrl}/habitaciones`;
-  
-  
-  constructor(private http: HttpClient) { }
+  private _apiUrlHabitaciones: string = `${environment.apiUrl}/habitaciones`;
 
-  obtenerHabitacion (habitacionId : string){
-    return this.http.get<any>(`${this._apiUrlHabitaciones}/${habitacionId}`)
-}
+  constructor(private http: HttpClient) {}
+
+  obtenerHabitacion(habitacionId: string) {
+    return this.http.get<Habitacion>(
+      `${this._apiUrlHabitaciones}/${habitacionId}`
+    );
+  }
 }

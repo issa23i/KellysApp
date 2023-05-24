@@ -1,18 +1,10 @@
 
 
-  <ng-container class="card" *ngFor="let datos of resultadoBusqueda">
+  <ng-container class="card" *ngFor="let datos of resultados">
     <div class="card-header">
-      <!-- Mostrar información del hotel -->
-      <h4>Nombre de Hotel {{ datos.nombreHotel }}</h4>
-      <p>Estrellas del hotel {{ datos.estrellas }}</p>
+      <h4>{{ datos.nombreHotel }}</h4>
     </div>
     <div class="card-body">
-      <!-- Mostrar información de la reserva -->
-      <p>Fecha Check-In: {{ datos.fechaCheckin }}</p>
-      <p>Fecha Check-Out: {{ datos.fechaCheckout }}</p>
-      <!-- Mostrar información de la habitación -->
-      <p>ID de Habitación: {{ datos.habitacionId }}</p>
-      <p>Precio Total: {{ datos.precioTotal }}</p>
     </div>
     <ion-card>
       <img [alt]=datos.nombreHotel [src]=datos.imagen />

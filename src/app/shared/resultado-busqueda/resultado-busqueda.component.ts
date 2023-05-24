@@ -6,6 +6,7 @@ import { HabitacionService } from '../../services/habitacion.service';
 import { ReservaService } from 'src/app/services/reserva.service';
 import { Hotel } from 'src/app/interfaces/hotel';
 import { Habitacion } from 'src/app/interfaces/habitacion';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-resultado-busqueda',
@@ -18,17 +19,31 @@ export class ResultadoBusquedaComponent implements OnInit {
   datosCombinados : any [] = [] */
 
   constructor(
-    private buscarService: BuscarService
+    private buscarService: BuscarService,
+    private router: Router
   ) {}
 
   ngOnInit() {
   }
 
+  get resultados(){
+    if(this.router.url === '/home'){
+      return this.resultadosFiltrados
+    } else { // si no está en home, está en /hotel
+      return this.resultadoBusqueda
+    }
+  }
   /**
    * devolver sólo una habitación por hotel (la más barata)
    */
   get resultadoBusqueda() {
     let resultados = this.buscarService.resultadosBusqueda;
+    
+    return resultados;
+  }
+  
+  get resultadosFiltrados(){
+    let resultados = this.resultadoBusqueda
 
     // Crear un mapa para almacenar los objetos únicos con hotelId como clave
     const mapaResultados = new Map();
@@ -54,8 +69,7 @@ export class ResultadoBusquedaComponent implements OnInit {
     // Obtener los valores del mapa como un array de objetos únicos con hotelId
     const resultadosFiltrados = Array.from(mapaResultados.values());
 
-    console.log(resultadosFiltrados)
-    return resultadosFiltrados;
+    return resultadosFiltrados
   }
 
   reservar(habitacionId : string){

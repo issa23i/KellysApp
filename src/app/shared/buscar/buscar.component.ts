@@ -30,10 +30,20 @@ export class BuscarComponent  implements OnInit {
   ngOnInit() {
     
   }
-  buscar() {
+  /**
+   * Si se pasa un hotel, buscar por hotel, si no, busca todas las habitaciones
+   * en todos los hoteles
+   * @param hotel 
+   * @returns 
+   */
+  buscar(hotel: string = '') {
     const fechaActual = new Date();
     const checkIn = new Date(this.parametrosBusqueda.checkIn);
     const checkOut = new Date(this.parametrosBusqueda.checkOut);
+
+    if(hotel){
+      this.parametrosBusqueda.hotel = hotel
+    }
 
     if (!this.parametrosBusqueda.ciudad.trim()) {
       this.errores.ciudad = 'La ciudad es obligatoria';
@@ -59,14 +69,6 @@ export class BuscarComponent  implements OnInit {
 
     this.buscarService.parametrosBusqueda = this.parametrosBusqueda
     this.buscarService.buscar()
-      .subscribe({
-        next: resp => {
-          console.log(resp);
-        },
-        error: err => {
-          console.error(err, err.message);
-        }
-      });
   }
   
 

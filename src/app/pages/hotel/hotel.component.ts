@@ -5,6 +5,7 @@ import { HotelService } from 'src/app/services/hotel.service';
 import { ImagenService } from '../../services/imagen.service';
 import { Imagen } from 'src/app/interfaces/imagen';
 import { error } from 'console';
+import { HabitacionService } from 'src/app/services/habitacion.service';
 
 @Component({
   selector: 'app-hotel',
@@ -31,7 +32,8 @@ export class HotelComponent implements OnInit {
   constructor(
     private hotelService: HotelService,
     private activatedRoute: ActivatedRoute,
-    private imagenService: ImagenService
+    private imagenService: ImagenService,
+    private habitacionService: HabitacionService
   ) {}
 
   ngOnInit() {
@@ -89,5 +91,17 @@ export class HotelComponent implements OnInit {
       estrellas.push(i)
     }
     return estrellas
+  }
+
+  getHabitacion(idHabitacion : string){
+    this.habitacionService.obtenerHabitacion(idHabitacion)
+    .subscribe({
+      next: (resp) => {
+        console.log(resp)
+      },
+      error: (err) => {
+        console.error(err, err.message);
+      }
+    })
   }
 }

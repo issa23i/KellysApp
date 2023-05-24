@@ -21,8 +21,12 @@ export class BuscarService {
   constructor(private http: HttpClient) { }
 
 
-  buscar(): Observable<any>{
-  
+  /**
+   * 
+   * @param hotel si no se pasa hotel hace una búsqueda de habitaciones general
+   * @returns 
+   */
+  buscar(){
   
     this.http.post<any>(this._apiUrlBuscar, this.parametrosBusqueda)
     .subscribe({
@@ -34,7 +38,6 @@ export class BuscarService {
         console.error(err, err.message);
       }
     });
-    return this.http.post<any>(this._apiUrlBuscar, this.parametrosBusqueda);
   }
 
 
