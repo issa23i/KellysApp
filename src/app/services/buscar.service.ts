@@ -12,9 +12,6 @@ export class BuscarService {
 
   private _parametrosBusqueda!: ParamBuscar;
   private _resultadosBusqueda: ResultadoBusqueda[] = [];
-  
-  
-
 
   private _apiUrlBuscar : string = `${environment.apiUrl}/buscar`;
 
@@ -23,11 +20,14 @@ export class BuscarService {
 
   /**
    * 
-   * @param hotel si no se pasa hotel hace una búsqueda de habitaciones general
+   * @param hotel si no se pasa hotel hace una búsqueda de habitaciones general,
+   *              si pasa un hotel Id, buscará por hotel
    * @returns 
    */
-  buscar(){
-  
+  buscar(hotelId : string = ''){
+    if (hotelId) {
+      this._apiUrlBuscar = `${this._apiUrlBuscar}/${hotelId}`
+    }
     this.http.post<any>(this._apiUrlBuscar, this.parametrosBusqueda)
     .subscribe({
       next: (resp : ResultadoBusqueda[]) => {

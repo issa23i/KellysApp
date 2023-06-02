@@ -10,6 +10,9 @@
         </swiper-slide>
       </swiper-container>
 
+      <!-- Pasamos el nombre del hotel como parámetro para mostrarlo en el formulario de búsqueda -->
+      <app-buscar [nombreHotel]=hotel.nombre></app-buscar>
+ 
       <!--Título y opiniones-->
       <div class="m-3">
         <h1 class="d-inline">{{ hotel.nombre }}</h1>
@@ -35,7 +38,7 @@
       <p>Ciudad: {{ hotel.ciudad }}</p>
       <p>Servicios: {{ hotel.servicios }}</p>
 
-      
+      <app-resultado-busqueda></app-resultado-busqueda>
     </ng-template>
   </div>
 </ion-content>

@@ -14,7 +14,6 @@ import { HabitacionService } from 'src/app/services/habitacion.service';
 })
 export class HotelComponent implements OnInit {
 
-  //TODO: Poner un buscador de hotel, y poner resultado búsqueda en html
 
   private _hotel: Hotel = {
     nombre: '',

@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { Component, Input, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { ParamBuscar } from 'src/app/interfaces/param-buscar';
 import { BuscarService } from 'src/app/services/buscar.service';
 
@@ -10,7 +10,13 @@ import { BuscarService } from 'src/app/services/buscar.service';
 })
 export class BuscarComponent  implements OnInit {
 
+  // recoge el nombre del hotel si se encuentra en la ruta hotel
+  @Input() nombreHotel: string = '';
+
+  hotel : string = ''; //recogerá de la ruta si existe un id de hotel
+
   parametrosBusqueda: ParamBuscar = {
+    hotel: this.hotel,
     ciudad: '',
     checkIn: new Date(),
     checkOut: new Date(),
@@ -25,28 +31,33 @@ export class BuscarComponent  implements OnInit {
     viajeros: ''
   };
 
-  constructor(private buscarService: BuscarService) { }
+  constructor(
+    private route: ActivatedRoute, private buscarService: BuscarService) { }
 
-  ngOnInit() {
-    
-  }
-  /**
-   * Si se pasa un hotel, buscar por hotel, si no, busca todas las habitaciones
-   * en todos los hoteles
-   * @param hotel 
-   * @returns 
-   */
-  buscar(hotel: string = '') {
+    ngOnInit() {
+      this.route.paramMap.subscribe((params) => {
+        // Obtener el valor de 'hotel' de la ruta o si no hay id, cadena vacía
+        this.hotel = params.get('id') || '';
+        this.parametrosBusqueda.hotel = this.hotel; // Actualizar el valor de parametrosBusqueda.hotel
+      });
+    }
+  
+
+  buscar(hotelId : string = '') {
     const fechaActual = new Date();
     const checkIn = new Date(this.parametrosBusqueda.checkIn);
     const checkOut = new Date(this.parametrosBusqueda.checkOut);
 
-    if(hotel){
-      this.parametrosBusqueda.hotel = hotel
-    }
 
-    if (!this.parametrosBusqueda.ciudad.trim()) {
+    if(this.parametrosBusqueda.ciudad){
+      if (!this.parametrosBusqueda.ciudad.trim()) {
       this.errores.ciudad = 'La ciudad es obligatoria';
+      return;
+    }
+    }
+    
+    if(!checkIn || !checkOut){
+      this.errores.checkIn = 'Debe introducir un rango de fechas válido'
       return;
     }
 
@@ -60,6 +71,11 @@ export class BuscarComponent  implements OnInit {
       return;
     }
 
+    if(!this.parametrosBusqueda.viajeros){
+      this.errores.viajeros = 'Debe introducir un número de viajeros comprendido entre 1 y 9, ambos inclusive.'
+      return;
+    }
+
     if (this.parametrosBusqueda.viajeros < 1 || this.parametrosBusqueda.viajeros > 9) {
       this.errores.viajeros = 'El número de viajeros debe estar comprendido entre 1 y 9, ambos inclusive.'
       return;
@@ -68,7 +84,9 @@ export class BuscarComponent  implements OnInit {
     console.log(this.parametrosBusqueda);
 
     this.buscarService.parametrosBusqueda = this.parametrosBusqueda
-    this.buscarService.buscar()
+    console.log(this.buscarService.parametrosBusqueda)
+    console.log(hotelId)
+    this.buscarService.buscar(hotelId)
   }
   
 
