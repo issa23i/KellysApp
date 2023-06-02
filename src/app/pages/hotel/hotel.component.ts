@@ -13,6 +13,9 @@ import { HabitacionService } from 'src/app/services/habitacion.service';
   styleUrls: ['./hotel.component.scss'],
 })
 export class HotelComponent implements OnInit {
+
+  //TODO: Poner un buscador de hotel, y poner resultado búsqueda en html
+
   private _hotel: Hotel = {
     nombre: '',
     direccion: '',
