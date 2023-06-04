@@ -54,14 +54,14 @@ export class HotelComponent implements OnInit {
                 this.imagenes.push(resp.data.url);
               },
               error: (err) => {
-                console.error(err, err.message);
+                console.error('Error al obtener la imagen del hotel ', err);
               },
             });
           });
           this._cargado = true;
         },
         error: (err) => {
-          console.error(err, err.message);
+          console.error('Error al obtener el hotel ', err);
         },
       });
     });
@@ -102,7 +102,7 @@ export class HotelComponent implements OnInit {
         console.log(resp)
       },
       error: (err) => {
-        console.error(err, err.message);
+        console.error('Error al obtener la habitación ', err);
       }
     })
   }

@@ -26,7 +26,7 @@ export class LoginComponent {
         this.router.navigateByUrl('/home');
       },
       error: (err) => {
-        console.error(err, err.message);
+        console.error('Error en el login ', err);
       },
     });
   }

@@ -1,8 +1,8 @@
 import { HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, catchError } from 'rxjs';
 import { AuthService } from './auth.service';
-import { CookieService } from 'ngx-cookie-service';
+import { throwError } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -13,6 +13,7 @@ export class AuthInterceptorService implements HttpInterceptor {
 
   constructor(private authService: AuthService) { }
 
+  // TODO: Llevar un control del interceptor, borrar este contador antes de la entrega
   contadorInterceptar = 0
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     this.contadorInterceptar++
@@ -29,6 +30,11 @@ export class AuthInterceptorService implements HttpInterceptor {
       });
     }
 
-    return next.handle(req);
+    return next.handle(req).pipe(
+      catchError((error) => {
+        console.error('Error en la petición HTTP ', error)
+        return throwError('Error en la petición HTTP')
+      })
+    )
   }
 }

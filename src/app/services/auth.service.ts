@@ -6,6 +6,8 @@ import { environment } from 'src/environments/environment';
 import { Usuario } from '../interfaces/usuario';
 import { CookieService } from 'ngx-cookie-service';
 import { Router } from '@angular/router';
+import { catchError } from 'rxjs/operators';
+import { throwError } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -26,8 +28,12 @@ export class AuthService {
         this.token = response.data.token;
         this.usuario = response;
         this.setUsuario(this.usuario);
-      })
-    );
+      }),
+      catchError((error) => {
+        console.error('Error en la petición HTTP ', error)
+        return throwError('Error en la solicitud HTTP')
+      }
+    ));
   }
 
   register(user: any): Observable<Usuario> {
@@ -36,8 +42,12 @@ export class AuthService {
         this.token = response.data.token;
         this.usuario = response;
         this.setUsuario(this.usuario);
-      })
-    );
+      }),
+      catchError((error) => {
+        console.error('Error en la petición HTTP ', error)
+        return throwError('Error en la solicitud HTTP')
+      }
+    ));
   }
 
   setToken(token: string) {

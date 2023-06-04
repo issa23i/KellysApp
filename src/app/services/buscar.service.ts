@@ -35,7 +35,7 @@ export class BuscarService {
         console.log(resp);
       },
       error: err => {
-        console.error(err, err.message);
+        console.error('Error al obtener los resultados de la búsqueda ', err);
       }
     });
   }

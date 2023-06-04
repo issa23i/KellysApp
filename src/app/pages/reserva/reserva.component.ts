@@ -48,8 +48,8 @@ export class ReservaComponent implements OnInit {
             this.obtenerHotel(this._reserva.hotel)
 
           },
-          error: (error) => {
-            console.error(error);
+          error: ( error) => {
+            console.error('Error al obtener la reserva ', error);
           },
         });
       }
@@ -63,7 +63,7 @@ export class ReservaComponent implements OnInit {
         this._cargado = true;
       },
       error: (error) => {
-        console.error(error);
+        console.error('Error al obtener el hotel ',error);
       },
     });
   }

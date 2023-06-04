@@ -100,7 +100,7 @@ export class RegisterComponent   {
       this.router.navigateByUrl("/home")
     },
     error: (err) => {
-      console.error(err, err.message)
+      console.error( 'Error en el registro de usuario ', err)
     }
   })
   }
