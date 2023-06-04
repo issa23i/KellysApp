@@ -11,6 +11,7 @@ import { FormsModule } from '@angular/forms';
 import { SharedModule } from "../shared/shared.module";
 import { BuscarComponent } from '../shared/buscar/buscar.component';
 import { RouterModule } from '@angular/router';
+import { ReservaComponent } from './reserva/reserva.component';
 
 
 
@@ -22,7 +23,8 @@ import { RouterModule } from '@angular/router';
         MiPerfilComponent,
         MisReservasComponent,
         PorQueComponent,
-        RegisterComponent
+        RegisterComponent,
+        ReservaComponent
     ],
     imports: [
         CommonModule,

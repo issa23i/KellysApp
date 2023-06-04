@@ -1,0 +1,28 @@
+<ion-content [fullscreen]="true" class="ion-padding">
+  <div class="padding-top-save-header">
+    <div class="alert alert-info" *ngIf="!cargado; else divReserva">
+      <p>Espere...</p>
+    </div>
+    <!-- Sólo se mostrará cuando los datos de la reserva y del hotel estén cargados -->
+    <ng-template #divReserva>
+      <h2 *ngIf="reserva.aceptada; else denegada">Reserva aceptada por el hotel</h2>
+      <ng-template #denegada>
+        <h2>Reserva pendiente de aceptar por el hotel</h2>
+      </ng-template>
+      <p class="fw-bold">Guarde el siguiente código de reserva: </p>
+      <p>{{reserva._id}}</p>
+
+      
+      <p class="fw-bold">{{hotel.nombre}} - {{hotel.direccion}}</p> 
+      <p class="fw-bold">CheckIn:</p>
+      <p> {{reserva.fechaCheckin | date:'dd/MM/yyyy'}}</p>
+      <p class="fw-bold">CheckIn:</p>
+      <p> {{reserva.fechaCheckout | date:'dd/MM/yyyy'}}</p>
+      <a routerLink="/home">
+      <ion-button expand="block" fill="clear" shape="round" class="custom-buttom">
+        Volver
+      </ion-button></a>
+    </ng-template>
+  </div>
+</ion-content>
+

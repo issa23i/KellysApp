@@ -8,6 +8,7 @@ import { PorQueComponent } from './pages/por-que/por-que.component';
 import { LoginComponent } from './pages/login/login.component';
 import { RegisterComponent } from './pages/register/register.component';
 import { AuthGuard } from './auth.guard';
+import { ReservaComponent } from './pages/reserva/reserva.component';
 
 const routes: Routes = [
   {
@@ -36,6 +37,11 @@ const routes: Routes = [
     component: MisReservasComponent,
     pathMatch: 'full',
     canActivate: [AuthGuard]
+  },
+  {
+    path: 'reserva/:id',
+    component: ReservaComponent,
+    pathMatch: 'full'
   },
   {
     path: 'por-que',

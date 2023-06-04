@@ -27,12 +27,16 @@ export class ReservaService {
       fechaCheckout: resultadoBusqueda.fechaCheckout,
       numPlazas: resultadoBusqueda.numPlazas,
       habitacion: resultadoBusqueda.habitacionId,
-      aceptada: false
+      aceptada: false,
+      precioTotal: resultadoBusqueda.precioTotal
       }
       this._reserva = reserva
     } 
     }
     
+  setReserva(reserva : Reserva){
+    this.httpClient.post<Reserva>(`${environment.apiUrl}/reservas`,reserva)
+  }
 
   getReserva(id : string){
     return this.httpClient.get<Reserva>(`${environment.apiUrl}/reservas/${id}`)
