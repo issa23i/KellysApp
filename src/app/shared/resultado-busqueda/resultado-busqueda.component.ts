@@ -1,12 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { BuscarService } from 'src/app/services/buscar.service';
-import { HotelService } from 'src/app/services/hotel.service';
-import { ImagenService } from 'src/app/services/imagen.service';
-import { HabitacionService } from '../../services/habitacion.service';
 import { ReservaService } from 'src/app/services/reserva.service';
-import { Hotel } from 'src/app/interfaces/hotel';
-import { Habitacion } from 'src/app/interfaces/habitacion';
 import { Router } from '@angular/router';
+import { ResultadoBusqueda } from '../../interfaces/resultado-busqueda';
+import { error } from 'console';
 
 @Component({
   selector: 'app-resultado-busqueda',
@@ -15,11 +12,10 @@ import { Router } from '@angular/router';
 })
 export class ResultadoBusquedaComponent implements OnInit {
 
-  /* cargado : boolean = false
-  datosCombinados : any [] = [] */
 
   constructor(
     private buscarService: BuscarService,
+    private reservaService: ReservaService,
     private router: Router
   ) {}
 
@@ -33,15 +29,16 @@ export class ResultadoBusquedaComponent implements OnInit {
       return this.resultadoBusqueda
     }
   }
-  /**
-   * devolver sólo una habitación por hotel (la más barata)
-   */
-  get resultadoBusqueda() {
+  
+  get resultadoBusqueda () {
     let resultados = this.buscarService.resultadosBusqueda;
     
     return resultados;
   }
   
+  /**
+   * devolver sólo una habitación por hotel (la más barata)
+   */
   get resultadosFiltrados(){
     let resultados = this.resultadoBusqueda
 
@@ -72,7 +69,24 @@ export class ResultadoBusquedaComponent implements OnInit {
     return resultadosFiltrados
   }
 
-  reservar(habitacionId : string){
-    // TODO: lógica de reservar
+  reservar(resultadoBusqueda: ResultadoBusqueda){
+    if(this.reservaService.newReserva(resultadoBusqueda)){
+      console.log(this.reservaService.reserva)
+      this.reservaService.setReserva()
+        .subscribe({
+          next: (data) => {
+            // ir a la página de la reserva
+            console.log(data['data']._id)
+            console.log(data)
+            this.router.navigateByUrl(`/reserva/${data['data']._id}`);
+
+          },
+          error: (err) => {
+            console.error(err)
+          }
+        })
+    } else {
+
+    }
   }
 }
