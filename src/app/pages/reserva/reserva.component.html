@@ -18,7 +18,8 @@
       <p> {{reserva.fechaCheckin | date:'dd/MM/yyyy'}}</p>
       <p class="fw-bold">CheckIn:</p>
       <p> {{reserva.fechaCheckout | date:'dd/MM/yyyy'}}</p>
-      <a routerLink="/home">
+      <!-- Recoge en state dónde estamos antes de redirigir a home -->
+      <a routerLink="/home" >
       <ion-button expand="block" fill="clear" shape="round" class="custom-buttom">
         Volver
       </ion-button></a>

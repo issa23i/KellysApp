@@ -4,6 +4,9 @@ import { AuthService } from 'src/app/services/auth.service';
 import { HotelService } from '../../services/hotel.service';
 import { Hotel } from 'src/app/interfaces/hotel';
 import { ImagenService } from 'src/app/services/imagen.service';
+import { CookieService } from 'ngx-cookie-service';
+import { AlertController } from '@ionic/angular';
+import { NavigationEnd, Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -17,7 +20,10 @@ export class HomeComponent implements OnInit {
   constructor(
     public auth: AuthService,
     private hotelService: HotelService,
-    private imagenService: ImagenService
+    private imagenService: ImagenService,
+    private cookieService: CookieService,
+    private alertController: AlertController,
+    private router: Router
   ) {
     this.getUserLogged();
   }
@@ -45,6 +51,19 @@ export class HomeComponent implements OnInit {
         console.error(err, err.message);
       },
     });
+
+    this.router.events.subscribe((event) => {
+      if (event instanceof NavigationEnd) {
+
+    let previousUrl = this.cookieService.get('previousUrl');
+    
+    if(previousUrl === '/login'){
+      let userData = JSON.parse(this.cookieService.get('usuario'));
+      let userName = userData.data.user.nombre;
+      console.log('Bienvenid@ ' + userName);
+      this.mostrarVentanaEmergente(userName)
+      this.cookieService.delete('previousUrl')
+    }}})
   }
 
   public set hoteles(value: Hotel[]) {
@@ -59,6 +78,7 @@ export class HomeComponent implements OnInit {
   public set imagenes(value: string[]) {
     this._imagenes = value;
   }
+
   getUserLogged() {
     if (this.auth.getUsuario()) {
       let usuario: Usuario = this.auth.getUsuario();
@@ -77,4 +97,20 @@ export class HomeComponent implements OnInit {
     return estrellas
   }
   
+  // Función para mostrar la ventana emergente de bienvenida
+async mostrarVentanaEmergente(user:string) {
+  const alert = await this.alertController.create({
+    header: `¡Bienvenid@, ${user}!`,
+    message: '¡Gracias por iniciar sesión!',
+    buttons: ['Aceptar']
+  });
+
+  await alert.present();
+
+  // Esperar 3 segundos 
+  await new Promise(resolve => setTimeout(resolve, 3000));
+
+  // Cerrar la ventana emergente
+  await alert.dismiss();
+}
 }
