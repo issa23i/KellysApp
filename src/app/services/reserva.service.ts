@@ -12,9 +12,7 @@ import { Observable } from 'rxjs';
 })
 export class ReservaService {
   private _reserva!: Reserva;
-  public get reserva(): Reserva {
-    return this._reserva;
-  }
+  private _resultado!: ResultadoBusqueda;
 
   constructor(
     private httpClient: HttpClient,
@@ -24,6 +22,7 @@ export class ReservaService {
   ) {}
 
   newReserva(resultadoBusqueda: ResultadoBusqueda) {
+    this._resultado = resultadoBusqueda
     let usuarioId = this.personaService.getIdUsuario();
     if (usuarioId) {
       let reserva: Reserva = {
@@ -47,7 +46,16 @@ export class ReservaService {
     return this.httpClient.post<Reserva>(`${environment.apiUrl}/reservas`, this._reserva);
   }
 
-  getReserva(id: string) {
+  getReservaPorId(id: string) {
     return this.httpClient.get<Reserva>(`${environment.apiUrl}/reservas/${id}`);
+  }
+
+  
+  public get reserva(): Reserva {
+    return this._reserva;
+  }
+  
+  public get resultado(): ResultadoBusqueda {
+    return this._resultado;
   }
 }

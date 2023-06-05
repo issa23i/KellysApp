@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { BuscarService } from 'src/app/services/buscar.service';
-import { ReservaService } from 'src/app/services/reserva.service';
 import { Router } from '@angular/router';
 import { ResultadoBusqueda } from '../../interfaces/resultado-busqueda';
-import { error } from 'console';
+import { ConfirmComponent } from '../confirm/confirm.component';
+import { ModalController, AlertController } from '@ionic/angular';
+import { ReservaService } from 'src/app/services/reserva.service';
 
 @Component({
   selector: 'app-resultado-busqueda',
@@ -15,8 +16,9 @@ export class ResultadoBusquedaComponent implements OnInit {
 
   constructor(
     private buscarService: BuscarService,
+    private router: Router,
     private reservaService: ReservaService,
-    private router: Router
+    private alertController: AlertController
   ) {}
 
   ngOnInit() {
@@ -69,24 +71,28 @@ export class ResultadoBusquedaComponent implements OnInit {
     return resultadosFiltrados
   }
 
-  reservar(resultadoBusqueda: ResultadoBusqueda){
+  /**
+   * Si hay usuario logado, crea una reserva en el servicio
+   *   y redirige a confirm, si no, redirige a login
+   * @param resultadoBusqueda 
+   */
+  async reservar(resultadoBusqueda: ResultadoBusqueda) {
     if(this.reservaService.newReserva(resultadoBusqueda)){
-      console.log(this.reservaService.reserva)
-      this.reservaService.setReserva()
-        .subscribe({
-          next: (data) => {
-            // ir a la página de la reserva
-            console.log(data['data']._id)
-            console.log(data)
-            this.router.navigateByUrl(`/reserva/${data['data']._id}`);
-
-          },
-          error: (err) => {
-            console.error(err)
-          }
-        })
+      this.router.navigateByUrl('/confirm')
     } else {
-
+      await this.presentAlert();
+      await this.router.navigateByUrl('/login')
     }
   }
+  
+  async presentAlert() {
+    const alert = await this.alertController.create({
+      header: 'Inicie Sesión',
+      message: 'Debe estar registrado e iniciar sesión para poder realizar una reserva ',
+      buttons: ['Entendido']
+    });
+  
+    await alert.present();
+  }
+  
 }

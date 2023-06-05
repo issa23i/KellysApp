@@ -7,18 +7,20 @@ import { BuscarComponent } from './buscar/buscar.component';
 import { RouterModule } from '@angular/router';
 import { NgbDatepicker } from '@ng-bootstrap/ng-bootstrap';
 import { ResultadoBusquedaComponent } from './resultado-busqueda/resultado-busqueda.component';
+import { ConfirmComponent } from './confirm/confirm.component';
+import { PagesModule } from '../pages/pages.module';
 
 
 
 @NgModule({
-  declarations: [HeaderComponent, BuscarComponent, ResultadoBusquedaComponent],
+  declarations: [HeaderComponent, BuscarComponent, ResultadoBusquedaComponent, ConfirmComponent],
   imports: [
     CommonModule,
     IonicModule,
     FormsModule,
     RouterModule,
     ReactiveFormsModule,
-    NgbDatepicker,
+    NgbDatepicker
   ],
   exports: [HeaderComponent, BuscarComponent, ResultadoBusquedaComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]

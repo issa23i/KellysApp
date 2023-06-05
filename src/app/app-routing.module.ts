@@ -9,6 +9,7 @@ import { LoginComponent } from './pages/login/login.component';
 import { RegisterComponent } from './pages/register/register.component';
 import { AuthGuard } from './auth.guard';
 import { ReservaComponent } from './pages/reserva/reserva.component';
+import { ConfirmComponent } from './shared/confirm/confirm.component';
 
 const routes: Routes = [
   {
@@ -41,6 +42,11 @@ const routes: Routes = [
   {
     path: 'reserva/:id',
     component: ReservaComponent,
+    pathMatch: 'full'
+  },
+  {
+    path: 'confirm',
+    component: ConfirmComponent,
     pathMatch: 'full'
   },
   {

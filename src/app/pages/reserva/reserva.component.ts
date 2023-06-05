@@ -40,7 +40,7 @@ export class ReservaComponent implements OnInit {
     this.activatedRoute.params.subscribe((params) => {
       this._id = params['id'];
       if (this._id) {
-        this.reservaService.getReserva(this._id).subscribe({
+        this.reservaService.getReservaPorId(this._id).subscribe({
           next: (data) => {
             this._reserva = data['reserva'];
 

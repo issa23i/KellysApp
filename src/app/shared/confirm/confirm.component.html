@@ -1,0 +1,24 @@
+
+<ion-content class="padding-top-save-header ion-padding">
+  <p class="p-5">hola</p>
+  <ion-card *ngIf="resultado">
+    
+    <ion-card-header>
+      {{resultado.nombreHotel}}
+    </ion-card-header>
+    <ion-card-content>
+      <p class="fw-bold">Fechas:</p>
+      <p> Del {{resultado.fechaCheckin | date:'dd/MM/yyyy'}} al 
+       {{resultado.fechaCheckout | date:'dd/MM/yyyy'}} </p>
+      <p class="fw-bold">Viajeros</p>
+      <p>{{resultado.numPlazas}}</p>
+      <p>Cama {{resultado.tipoCama}}</p>
+      <p class="fw-bold">Precio:</p>
+      <p>${{resultado.precioTotal}}</p>
+    </ion-card-content>
+  <ion-button (click)="confirmarReserva()" class="custom-buttom">Confirmar</ion-button>
+  </ion-card>
+
+<h1>ieee</h1>
+</ion-content>
+

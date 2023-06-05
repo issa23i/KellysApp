@@ -54,7 +54,9 @@ export class HomeComponent implements OnInit {
     });
 
     this.router.events.subscribe((event) => {
+      // comprobar si se ha producido una navegación
       if (event instanceof NavigationEnd) {
+        // si viene de login, dar bienvenida
         let previousUrl = this.cookieService.get('previousUrl');
 
         if (previousUrl === '/login') {
