@@ -40,6 +40,11 @@ const routes: Routes = [
     canActivate: [AuthGuard]
   },
   {
+    path: 'mis-reservas/:id',
+    component: ReservaComponent,
+    pathMatch: 'full'
+  },
+  {
     path: 'reserva/:id',
     component: ReservaComponent,
     pathMatch: 'full'

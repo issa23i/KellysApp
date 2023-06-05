@@ -1,5 +1,29 @@
 <ion-content [fullscreen]="true" class="ion-padding">
   <div class="padding-top-save-header">
-    mis-reservas works!
+    
+    <div *ngIf="!cargadas; else mostrarReservas">
+      <p class="bg-info">cargando, espere...</p>
+    </div>
+    <ng-template #mostrarReservas>
+      <ion-card *ngFor="let reserva of reservas">
+        <a [routerLink]="reserva._id" routerLinkActive="router-link-active" >
+        <ion-card-header>
+          <h3>{{reserva.hotel}}</h3>
+        </ion-card-header>
+        <ion-card-content>
+          <p class="fw-bold">fecha checkIn</p>
+          <p>{{reserva.fechaCheckin | date:'dd/MM/YY'}}</p>
+          <p class="fw-bold">fecha checkOut</p>
+          <p>{{reserva.fechaCheckout | date:'dd/MM/YY'}}</p>
+          <p class="fw-bold">Id</p>
+          <p>{{reserva._id}}</p>
+          <p class="fw-bold">Estado</p>
+          <p *ngIf="reserva.aceptada; else noAceptada">Confirmada por el hotel</p>
+          <ng-template #noAceptada>
+            <p>Pendiente de confirmar por el hotel</p>
+          </ng-template>
+        </ion-card-content></a>
+      </ion-card>
+    </ng-template>
   </div>
 </ion-content>

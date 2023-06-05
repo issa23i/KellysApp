@@ -11,14 +11,15 @@
       </ng-template>
       <p class="fw-bold">Guarde el siguiente código de reserva: </p>
       <p>{{reserva._id}}</p>
-
-      
       <p class="fw-bold">{{hotel.nombre}} - {{hotel.direccion}}</p> 
       <p class="fw-bold">CheckIn:</p>
       <p> {{reserva.fechaCheckin | date:'dd/MM/yyyy'}}</p>
       <p class="fw-bold">CheckOut:</p>
       <p> {{reserva.fechaCheckout | date:'dd/MM/yyyy'}}</p>
-      <!-- Recoge en state dónde estamos antes de redirigir a home -->
+      <p class="fw-bold">Viajeros</p>
+      <p>{{reserva.numPlazas}}</p>
+      <p class="fw-bold">Precio</p>
+      <p>{{reserva.precioTotal}} €</p>
       <a routerLink="/home" >
       <ion-button expand="block" fill="clear" shape="round" class="custom-buttom">
         Volver

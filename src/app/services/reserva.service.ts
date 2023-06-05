@@ -51,6 +51,13 @@ export class ReservaService {
     return this.httpClient.get<Reserva>(`${environment.apiUrl}/reservas/${id}`);
   }
 
+  getReservas() {
+    return this.httpClient.get<Reserva>(`${environment.apiUrl}/reservas/`);
+  }
+
+  getReservasAdmin(){
+    return this.httpClient.get<Reserva>(`${environment.apiUrl}/reservas/admin`);
+  }
   
   public get reserva(): Reserva {
     return this._reserva;
