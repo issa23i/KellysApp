@@ -78,7 +78,7 @@ export class AuthService {
     return null;
   }
 
-  logout() {
+  async logout() {
     if (this.cookies.check('usuario')) {
       this.cookies.delete('usuario');
     }
@@ -86,6 +86,7 @@ export class AuthService {
       this.cookies.delete('token');
     }
     this.token = null;
-    this.router.navigateByUrl('/home')
+    this.cookies.deleteAll()
+    await this.router.navigateByUrl('/home')
   }
 }

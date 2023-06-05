@@ -14,6 +14,7 @@ export class ReservaService {
   private _reserva!: Reserva;
   private _resultado!: ResultadoBusqueda;
 
+
   constructor(
     private httpClient: HttpClient,
     private personaService: PersonaService,
