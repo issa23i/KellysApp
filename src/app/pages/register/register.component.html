@@ -1,74 +1,96 @@
 <ion-content [fullscreen]="true" class="ion-padding">
-  <div class="padding-top-save-header">
-    <form
-      class="custom-form"
-      #registroForm="ngForm"
-      (ngSubmit)="onSubmit(registroForm)"
-      method="post"
-    >
-      <h1 class="pb-5">Registro</h1>
-      <input
-        type="text"
-        [(ngModel)]="nif"
-        name="nif"
-        placeholder="NIF"
-        required="required"
-        (blur)="nifEditado = true; nifValidado()"
-      />
-      <p *ngIf="nifEditado && !nifValidado()" class="mensaje-error">
-        Nif no válido
-      </p>
-      <input
-        type="text"
-        [(ngModel)]="nombre"
-        name="nombre"
-        placeholder="Nombre"
-        required
-      />
-      <input
-        type="text"
-        [(ngModel)]="apellido1"
-        name="apellido1"
-        placeholder="Primer Apellido"
-        required
-      />
-      <input
-        type="text"
-        [(ngModel)]="apellido2"
-        name="apellido2"
-        placeholder="Segundo Apellido"
-        required
-      />
-      <input
-        type="email"
-        [(ngModel)]="email"
-        name="email"
-        placeholder="Email"
-        required
-      />
-      <input
-        type="password"
-        [(ngModel)]="password"
-        name="password"
-        placeholder="Password"
-        required
-      />
-      <input
-        type="password"
-        [(ngModel)]="confirmPassword"
-        name="password"
-        placeholder="Repeat the password"
-        required
-      />
-      <p *ngIf="passwordRegexError" class="mensaje-error">
-        *La contraseña debe contener al menos una letra mayúscula, una
-        minúscula, un número y tener al menos una longitud de 8 caracteres
-      </p>
-
-      <button type="submit">Registro</button>
-    </form>
-    <p *ngIf="passwordError" class="mensaje-error">
+  <form
+    class="custom-form padding-top-save-header"
+    #registroForm="ngForm"
+    (ngSubmit)="onSubmit(registroForm)"
+    method="post"
+  >
+    <h1 class="pb-3">Registro</h1>
+    <input
+      type="text"
+      [(ngModel)]="nif"
+      name="nif"
+      placeholder="NIF"
+      required
+      (blur)="nifEditado = true"
+    />
+    <p *ngIf="nifEditado && !nifValidado()" class="mensaje-error">
+      Nif no válido
+    </p>
+    <input
+      type="text"
+      [(ngModel)]="nombre"
+      name="nombre"
+      placeholder="Nombre"
+      required
+      (blur)="nombreEditado = true"
+    />
+    <p *ngIf="nombreEditado && !nombreValidado(nombre)" class="mensaje-error">
+      Nombre no válido, al menos debe contener tres letras
+    </p>
+    <input
+      type="text"
+      [(ngModel)]="apellido1"
+      name="apellido1"
+      placeholder="Primer Apellido"
+      required
+      (blur)="apellido1Editado = true"
+    />
+    <p *ngIf="apellido1Editado && !nombreValidado(apellido1)" class="mensaje-error">
+      Apellido no válido, al menos debe contener tres letras
+    </p>
+    <input
+      type="text"
+      [(ngModel)]="apellido2"
+      name="apellido2"
+      placeholder="Segundo Apellido"
+      required
+      (blur)="apellido2Editado = true"
+    />
+    <p *ngIf="apellido2Editado && !nombreValidado(apellido2)" class="mensaje-error">
+      Apellido no válido, al menos debe contener tres letras
+    </p>
+    <input
+      type="email"
+      [(ngModel)]="email"
+      name="email"
+      placeholder="Email"
+      required
+      (blur)="emailEditado = true"
+    />
+    <p *ngIf="emailEditado && !emailValidado(email)" class="mensaje-error">
+      Email no válido
+    </p>
+    <input 
+      type="password"
+      [(ngModel)]="password"
+      name="password"
+      placeholder="Contraseña"
+      required
+      (blur)="passEditado = true"
+    />
+    <p *ngIf="passEditado && !passValidado(password)" class="mensaje-error">
+      Contraseña no válida
+    </p>
+    <input
+      type="password"
+      [(ngModel)]="confirmPassword"
+      name="password"
+      placeholder="Repita la contraseña"
+      required
+      (blur)="confirmEditado = true"
+    />
+    <p *ngIf="confirmEditado && !confirmValidado(password, confirmPassword)" class="mensaje-error">
       Las contraseñas no coinciden
     </p>
-  </div>
+    <p class="mensaje-error">
+      *La contraseña debe contener al menos una letra mayúscula, una minúscula,
+      un número y tener al menos una longitud de 8 caracteres
+    </p>
+
+    <button type="submit" >Registro</button>
+  </form>
+  <p *ngIf="passwordError" class="mensaje-error">
+    Las contraseñas no coinciden
+  </p>
 </ion-content>

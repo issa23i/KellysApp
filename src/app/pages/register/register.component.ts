@@ -12,20 +12,28 @@ import { NgForm } from '@angular/forms';
 export class RegisterComponent   {
 
   email!: string;
+  emailEditado: boolean = false
 
   password!: string;
+  passEditado: boolean = false
+
   confirmPassword!: string;
+  confirmEditado: boolean = false
+
   passwordError: boolean = false
   passwordRegexError: boolean = false
 
   nif!: string;
-  // nifEditado sirve para que compruebe que se compruebe
-      // que el usuario ha editado el campo nif
   nifEditado: boolean = false
 
   nombre!: string;
+  nombreEditado: boolean = false
+
   apellido1!: string;
+  apellido1Editado: boolean = false
+
   apellido2!: string;
+  apellido2Editado: boolean = false
 
   onSubmit(registroForm: NgForm) {
     if (registroForm.invalid) {
@@ -76,7 +84,22 @@ export class RegisterComponent   {
   passValidado = (pass : string) => {
     // Al menos una minúscula, una mayúscula, un número, mínimo 8 caracteres
     let regex : RegExp = new RegExp(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/)
+    console.log(regex.test(pass))
     return regex.test(pass)
+  }
+
+  emailValidado = (email: string) => {
+    let regex = new RegExp(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/);
+    return regex.test(email);
+  }
+  
+  confirmValidado = (pass: string, confirm: string) => {
+    return pass === confirm
+  }
+
+  nombreValidado = (nombre: string) => {
+    let regex = new RegExp(/^\w{3,}$/)
+    return regex.test(nombre)
   }
 
   register() {
