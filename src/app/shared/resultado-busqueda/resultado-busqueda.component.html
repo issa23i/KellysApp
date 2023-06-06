@@ -1,5 +1,7 @@
 
-
+<div>
+  
+  <h3> Habitaciones</h3>
   <ng-container class="card" *ngFor="let resultadoBusqueda of resultados">
     <div class="card-header">
       <h4>{{ resultadoBusqueda.nombreHotel }}</h4>
@@ -9,16 +11,16 @@
     <ion-card>
       <img [alt]=resultadoBusqueda.nombreHotel [src]=resultadoBusqueda.imagen />
       <ion-card-header>
-        <ion-card-title>{{ resultadoBusqueda.precioTotal }} €</ion-card-title>
-        <ion-card-subtitle>{{ resultadoBusqueda.nombreHotel }}</ion-card-subtitle>
+        <ion-card-title class="fw-bold">{{ resultadoBusqueda.precioTotal }} €</ion-card-title>
       </ion-card-header>
     
       <ion-card-content>
-        Here's a small text description for the card content. Nothing more, nothing less.
+        <p>Plazas: {{ resultadoBusqueda.numPlazas}}</p>
+        <p>Vistas: {{resultadoBusqueda.vistas}}</p>
       </ion-card-content>
-      <ion-button (click)="reservar(resultadoBusqueda)" color="primary" expand="block"  shape="round">
+      <ion-button (click)="reservar(resultadoBusqueda)" color="secondary" expand="block" shape="round" id="reservarBtn">
         Reservar
       </ion-button>
     </ion-card>
   </ng-container>
-  
+  </div>
