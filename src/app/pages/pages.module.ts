@@ -12,6 +12,7 @@ import { SharedModule } from "../shared/shared.module";
 import { BuscarComponent } from '../shared/buscar/buscar.component';
 import { RouterModule } from '@angular/router';
 import { ReservaComponent } from './reserva/reserva.component';
+import { InicioSesionComponent } from '../shared/inicio-sesion/inicio-sesion.component';
 
 
 
@@ -24,7 +25,8 @@ import { ReservaComponent } from './reserva/reserva.component';
         MisReservasComponent,
         PorQueComponent,
         RegisterComponent,
-        ReservaComponent
+        ReservaComponent,
+        InicioSesionComponent
     ],
     imports: [
         CommonModule,

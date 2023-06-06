@@ -32,7 +32,7 @@ export class MiPerfilComponent implements OnInit {
       error: (err) => {
         console.error(err, err.message);
         console.log('No se ha iniciado sesión')
-        this.router.navigateByUrl('/login')
+        this.router.navigateByUrl('/inicio-sesion')
       },
     });
   }

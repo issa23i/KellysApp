@@ -10,6 +10,7 @@ import { RegisterComponent } from './pages/register/register.component';
 import { AuthGuard } from './auth.guard';
 import { ReservaComponent } from './pages/reserva/reserva.component';
 import { ConfirmComponent } from './shared/confirm/confirm.component';
+import { InicioSesionComponent } from './shared/inicio-sesion/inicio-sesion.component';
 
 const routes: Routes = [
   {
@@ -25,6 +26,14 @@ const routes: Routes = [
   {
     path: 'registro',
     component: RegisterComponent,
+    pathMatch: 'full'
+  },
+  {
+    path: 'inicio-sesion',
+    component: InicioSesionComponent,
+    data: {
+      isModal: true
+    },
     pathMatch: 'full'
   },
   {

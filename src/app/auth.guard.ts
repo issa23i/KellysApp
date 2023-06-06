@@ -12,7 +12,7 @@ export class AuthGuard implements CanActivate {
 
   redirect(flag: boolean): any { // si no está logueado, enviar a login
     if (!flag){
-      this.router.navigate(['/', 'login'])
+      this.router.navigate(['/', 'inicio-sesion'])
     }
   }
 
