@@ -1,10 +1,11 @@
 /** CREAR LAS VARIABLES PROPIAS Y LAS VARIABLES DE BOOTSTRAP A SOBREESCRIBIR **/
 
 $primary: #e71d75;
-$secondary: #1EE826;
+$secondary: #1ABE21;
 $letra_titulos:#5d5b53;
 $texto: #858585;
 $blanco: #fff;
+$danger:#eb445a;
 
 
 
@@ -182,6 +183,54 @@ $blanco: #fff;
     border-color: transparent #1EE826 transparent transparent;
   }
 
+  /** FORMULARIOS */
+  .formulario{
+    text-align: center;
+    input{
+      width: 60%;
+      background-color: $light;
+      box-shadow: 2px 2px 5px $letra_titulos;
+      padding: 0.7em;
+      margin:0.6em 0em;
+      border-radius: 10px;
+      border:none
+    }
+    .mensaje-alerta{
+      background-color: $warning;
+      color:$letra_titulos;
+    }
+    .mensaje-error{
+      background-color: $danger;
+      color: white;
+    }
+    .mensaje-info{
+      color: $primary;
+      font-style: italic;
+    }
+    .mensaje-alerta, .mensaje-error{
+      border-radius: 10px;
+      font-size: smaller;
+      font-weight: 600;
+      padding: 1em;
+      width: 80%;
+      margin: auto;
+      }
+    .mensaje-alerta,.mensaje-error,.mensaje-info{
+      font-style: italic;
+      transform: scale(0.7); // más pequeña aún la letra
+    }
+    h1{
+      color: $primary;
+    }
+    .custom-buttom{
+      width: 60%;
+      padding: 1em 0em;
+      background-color: $secondary;
+    }
+  }
+
+
+  /** OTROS ESTILOS */
   a{
     text-decoration: none;
   }

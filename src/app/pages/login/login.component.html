@@ -1,5 +1,5 @@
 <ion-content [fullscreen]="true" class="ion-padding">
-  <form class="custom-form padding-top-save-header" method="post">
+  <form class="custom-form padding-top-save-header formulario" method="post">
     <h1 class="pb-3">Login</h1>
     <input
       type="email"
@@ -23,15 +23,16 @@
     <p *ngIf="passEditado && !passValidado(password)" class="mensaje-error">
       Contraseña no válida
     </p>
-    <button type="submit" (click)="login()">Login</button>
+    <br>
+    <button type="submit" class="custom-buttom" (click)="login()">Iniciar Sesión</button>
+    <p *ngIf="errorAutenticacion" class="mensaje-info">
+      Email o contraseña incorrecta
+    </p>
   </form>
   <p>
     ¿Aún no tienes cuenta?
     <a [routerLink]="['/registro']" routerLinkActive="router-link-active"
       >Regístrate aquí</a
     >
-  </p>
-  <p *ngIf="errorAutenticacion" class="bg-warning">
-    Email o contraseña incorrecta
   </p>
 </ion-content>

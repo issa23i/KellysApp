@@ -35,10 +35,13 @@ export class RegisterComponent   {
   apellido2!: string;
   apellido2Editado: boolean = false
 
+  formularioInvalido: boolean = false
+
   onSubmit(registroForm: NgForm) {
     if (registroForm.invalid) {
       // El formulario es inválido, no lo envíes
       console.log('Formulario inválido');
+      this.formularioInvalido = true
       return;
     }
     
@@ -98,7 +101,7 @@ export class RegisterComponent   {
   }
 
   nombreValidado = (nombre: string) => {
-    let regex = new RegExp(/^\w{3,}$/)
+    let regex = new RegExp(/^[^\d\W]{3,}$/);
     return regex.test(nombre)
   }
 

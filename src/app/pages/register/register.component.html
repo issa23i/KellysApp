@@ -1,6 +1,6 @@
 <ion-content [fullscreen]="true" class="ion-padding">
   <form
-    class="custom-form padding-top-save-header"
+    class="custom-form padding-top-save-header formulario"
     #registroForm="ngForm"
     (ngSubmit)="onSubmit(registroForm)"
     method="post"
@@ -26,7 +26,7 @@
       (blur)="nombreEditado = true"
     />
     <p *ngIf="nombreEditado && !nombreValidado(nombre)" class="mensaje-error">
-      Nombre no válido, al menos debe contener tres letras
+      Nombre no válido
     </p>
     <input
       type="text"
@@ -37,7 +37,7 @@
       (blur)="apellido1Editado = true"
     />
     <p *ngIf="apellido1Editado && !nombreValidado(apellido1)" class="mensaje-error">
-      Apellido no válido, al menos debe contener tres letras
+      Apellido no válido
     </p>
     <input
       type="text"
@@ -48,7 +48,7 @@
       (blur)="apellido2Editado = true"
     />
     <p *ngIf="apellido2Editado && !nombreValidado(apellido2)" class="mensaje-error">
-      Apellido no válido, al menos debe contener tres letras
+      Apellido no válido
     </p>
     <input
       type="email"
@@ -83,14 +83,15 @@
     <p *ngIf="confirmEditado && !confirmValidado(password, confirmPassword)" class="mensaje-error">
       Las contraseñas no coinciden
     </p>
-    <p class="mensaje-error">
+    <p class="mensaje-info">
       *La contraseña debe contener al menos una letra mayúscula, una minúscula,
       un número y tener al menos una longitud de 8 caracteres
     </p>
 
-    <button type="submit" >Registro</button>
-  </form>
-  <p *ngIf="passwordError" class="mensaje-error">
-    Las contraseñas no coinciden
+    <button type="submit" class="custom-buttom">Registrarse</button>
+    
+  <p *ngIf="formularioInvalido" class="mensaje-error">
+    El formulario contiene errores, por favor verifique todos los campos
   </p>
+  </form>
 </ion-content>
