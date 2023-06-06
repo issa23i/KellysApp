@@ -1,6 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { IonMenu } from '@ionic/angular';
-import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-header',
@@ -11,26 +10,17 @@ export class HeaderComponent  implements OnInit {
 
   @ViewChild(IonMenu) menu!: IonMenu;
 
-  private _logado: boolean = false;
- 
-  
 
   closeMenu() {
     this.menu.close();
   }
 
-  constructor(private authService : AuthService) { }
+  constructor() { }
 
   ngOnInit() {
-    this.authService.getUsuario() ? this.logado = true : this.logado = false
   }
 
-  public get logado(): boolean {
-    return this.authService.getUsuario()
-  }
-  private set logado(value: boolean) {
-    this._logado = value;
-  }
+  
   
 
 }
