@@ -6,15 +6,23 @@
       [(ngModel)]="email"
       name="email"
       placeholder="Email"
-      required="required"
+      required
+      (blur)="emailEditado = true"
     />
+    <p *ngIf="emailEditado && !emailValidado(email)" class="mensaje-error">
+      Email no válido
+    </p>
     <input
       type="password"
       [(ngModel)]="password"
       name="password"
       placeholder="Password"
-      required="required"
+      required
+      (blur)="passEditado = true"
     />
+    <p *ngIf="passEditado && !passValidado(password)" class="mensaje-error">
+      Contraseña no válida
+    </p>
     <button type="submit" (click)="login()">Login</button>
   </form>
   <p>

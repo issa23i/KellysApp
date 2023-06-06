@@ -8,13 +8,20 @@ import { CookieService } from 'ngx-cookie-service';
   styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent {
+  
   email!: string;
+  emailEditado: boolean = false
+
   password!: string;
+  passEditado: boolean = false
+
+
   errorAutenticacion: boolean = false
 
   constructor(public auth: AuthService, 
     public router: Router, 
     private cookieService: CookieService) {}
+
 
   login() {
     this.errorAutenticacion = false
@@ -42,5 +49,16 @@ export class LoginComponent {
     });
   }
 
+  emailValidado = (email: string) => {
+    let regex = new RegExp(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/);
+    return regex.test(email);
+  }
+
+  passValidado = (pass : string) => {
+    // Al menos una minúscula, una mayúscula, un número, mínimo 8 caracteres
+    let regex : RegExp = new RegExp(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/)
+    console.log(regex.test(pass))
+    return regex.test(pass)
+  }
   
 }
