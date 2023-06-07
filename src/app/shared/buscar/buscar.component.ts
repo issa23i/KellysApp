@@ -47,13 +47,12 @@ export class BuscarComponent  implements OnInit {
     const fechaActual = new Date();
     const checkIn = new Date(this.parametrosBusqueda.checkIn);
     const checkOut = new Date(this.parametrosBusqueda.checkOut);
+    const ciudad = this.parametrosBusqueda.ciudad
 
 
-    if(this.parametrosBusqueda.ciudad){
-      if (!this.parametrosBusqueda.ciudad.trim()) {
+    if (!ciudad || !ciudad.trim()) {
       this.errores.ciudad = 'La ciudad es obligatoria';
       return;
-    }
     }
     
     if(!checkIn || !checkOut){
