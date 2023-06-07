@@ -13,6 +13,7 @@ import { BuscarComponent } from '../shared/buscar/buscar.component';
 import { RouterModule } from '@angular/router';
 import { ReservaComponent } from './reserva/reserva.component';
 import { InicioSesionComponent } from '../shared/inicio-sesion/inicio-sesion.component';
+import { AdminComponent } from './admin/admin.component';
 
 
 
@@ -26,7 +27,8 @@ import { InicioSesionComponent } from '../shared/inicio-sesion/inicio-sesion.com
         PorQueComponent,
         RegisterComponent,
         ReservaComponent,
-        InicioSesionComponent
+        InicioSesionComponent,
+        AdminComponent
     ],
     imports: [
         CommonModule,

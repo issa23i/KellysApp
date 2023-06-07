@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import { PreloadAllModules, RouterModule, Routes, CanActivate } from '@angular/router';
 import { HomeComponent } from './pages/home/home.component';
 import { MiPerfilComponent } from './pages/mi-perfil/mi-perfil.component';
 import { HotelComponent } from './pages/hotel/hotel.component';
@@ -7,10 +7,12 @@ import { MisReservasComponent } from './pages/mis-reservas/mis-reservas.componen
 import { PorQueComponent } from './pages/por-que/por-que.component';
 import { LoginComponent } from './pages/login/login.component';
 import { RegisterComponent } from './pages/register/register.component';
-import { AuthGuard } from './auth.guard';
+import { AuthGuard } from './guards/auth.guard';
 import { ReservaComponent } from './pages/reserva/reserva.component';
 import { ConfirmComponent } from './shared/confirm/confirm.component';
 import { InicioSesionComponent } from './shared/inicio-sesion/inicio-sesion.component';
+import { AdminComponent } from './pages/admin/admin.component';
+import { AdminGuard } from './guards/admin.guard';
 
 const routes: Routes = [
   {
@@ -31,10 +33,13 @@ const routes: Routes = [
   {
     path: 'inicio-sesion',
     component: InicioSesionComponent,
-    data: {
-      isModal: true
-    },
     pathMatch: 'full'
+  },
+  {
+    path: 'admin',
+    component: AdminComponent,
+    pathMatch: 'full',
+    canActivate: [AdminGuard]
   },
   {
     path: 'mi-perfil',

@@ -24,6 +24,9 @@
       <p>{{ persona.apellido2 }}</p>
       <p class="verdigrande">EMAIL</p>
       <p>{{ persona.email }}</p>
+      <ion-button id="admin" *ngIf="persona.rol==='admin'" (click)="admin()" color="secondary" expand="block" shape="round">
+        ADMIN
+      </ion-button>
       <ion-button (click)="logout()" class="custom-buttom" expand="block" shape="round">
         CERRAR SESIÓN
       </ion-button>

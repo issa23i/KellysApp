@@ -35,12 +35,17 @@ export class MiPerfilComponent implements OnInit {
         this.router.navigateByUrl('/inicio-sesion')
       },
     });
+
+    
   }
 
   logout(){
     this.authService.logout()
   }
 
+  admin(){
+    this.router.navigateByUrl('/admin')
+  }
   get persona(){
     return this._persona
   }
