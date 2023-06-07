@@ -73,7 +73,7 @@ export class AdminComponent implements OnInit {
     this.hotelService.addHotel(this.hotel).subscribe((response) => {
       // Manejar la respuesta del servidor, como mostrar un mensaje de éxito, limpiar el formulario, etc.
       console.log('Hotel agregado:', response);
-      this.presentAlertHotel(response.data._id);
+      this.presentAlertCreateHotel(response.data._id);
     });
   }
 
@@ -89,10 +89,20 @@ export class AdminComponent implements OnInit {
     this.hotel.imagenes = value.split(',').map(servicio => servicio.trim());
   }
 
-  async presentAlertHotel(hotelId: string) {
+  async presentAlertCreateHotel(hotelId: string) {
     const alert = await this.alertController.create({
       header: 'Hotel Agregado',
       message: 'El ID del hotel agregado es: ' + hotelId,
+      buttons: ['OK']
+    });
+  
+    await alert.present();
+  }
+
+  async presentAlertDeleteHotel() {
+    const alert = await this.alertController.create({
+      header: 'Hotel Eliminado',
+      message: 'El Hotel se ha eliminado con éxito.',
       buttons: ['OK']
     });
   
@@ -115,7 +125,14 @@ export class AdminComponent implements OnInit {
 
   eliminarHotel(idHotel : string = ''){
     if(idHotel){
-      this.hotelService.deleteHotel(idHotel).subscribe({})
+      this.hotelService.deleteHotel(idHotel).subscribe({
+        next: (response) => {
+          this.presentAlertDeleteHotel()
+          // Recargar la página inmediatamente
+          location.reload();
+        },
+        error: (error) => {}
+      })
     }
   }
 }
