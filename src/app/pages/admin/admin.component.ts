@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { AlertController } from '@ionic/angular';
 import { Hotel } from 'src/app/interfaces/hotel';
 import { Imagen } from 'src/app/interfaces/imagen';
@@ -35,7 +35,8 @@ export class AdminComponent implements OnInit {
   constructor(
     private hotelService: HotelService,
     private imagenService: ImagenService,
-    private alertController: AlertController
+    private alertController: AlertController,
+    private changeDetectorRef: ChangeDetectorRef
   ) {}
 
   ngOnInit() {
@@ -68,8 +69,8 @@ export class AdminComponent implements OnInit {
     this.hayHoteles = false
   }
   
-  async addHotel() {
-    await this.hotelService.addHotel(this.hotel).subscribe({
+  addHotel() {
+    this.hotelService.addHotel(this.hotel).subscribe({
       next: (htl) => {
         // Manejar la respuesta del servidor, como mostrar un mensaje de éxito, limpiar el formulario, etc.
         console.log('Hotel agregado:', htl);
@@ -109,7 +110,7 @@ export class AdminComponent implements OnInit {
       message: 'El Hotel se ha eliminado con éxito.',
       buttons: ['OK']
     });
-  
+    window.location.reload();
     await alert.present();
   }
   
@@ -127,14 +128,18 @@ export class AdminComponent implements OnInit {
     };
   }
 
-  async eliminarHotel(idHotel : string = ''){
+  eliminarHotel(idHotel : string = ''){
     if(idHotel){
       this.hotelService.deleteHotel(idHotel).subscribe({
         next: (response) => {
           this.presentAlertDeleteHotel()
+          console.log(response)
         },
-        error: (error) => {}
+        error: (error) => {
+          console.log('No se pudo eliminar el hotel ', error)
+        }
       })
+      
     }
   }
 }
