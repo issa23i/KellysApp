@@ -50,10 +50,13 @@ export class BuscarComponent  implements OnInit {
     const ciudad = this.parametrosBusqueda.ciudad
 
 
-    if (!ciudad || !ciudad.trim()) {
+    if(!this.hotel){
+      if (!ciudad || !ciudad.trim()) {
       this.errores.ciudad = 'La ciudad es obligatoria';
       return;
     }
+    }
+    
     
     if(!checkIn || !checkOut){
       this.errores.checkIn = 'Debe introducir un rango de fechas válido'

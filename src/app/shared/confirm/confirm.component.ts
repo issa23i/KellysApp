@@ -23,6 +23,7 @@ export class ConfirmComponent  implements OnInit {
               private authService: AuthService) { 
                 let idUsuario = this.authService.getIdUsuarioLogged()
                 if (!idUsuario) {
+                  window.location.reload()
                   this.router.navigateByUrl('/login');
                 }
               }

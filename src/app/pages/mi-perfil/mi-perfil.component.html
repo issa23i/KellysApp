@@ -1,24 +1,32 @@
 <ion-content [fullscreen]="true" class="ion-padding">
   <div class="padding-top-save-header">
+    <div class="bg-white d-flex justify-content-between align-items-center">
+      <h2 class="fw-bolder">MI PERFIL</h2>
+      <ion-buttons>
+        <ion-button>
+          <a href="/home">
+            <ion-icon color="primary" class="fs-4" name="close"></ion-icon>
+          </a>
+        </ion-button>
+      </ion-buttons>
+    </div>
     <div class="alert alert-info" *ngIf="!existe; else divPersona">
       <p>Espere por favor...</p>
     </div>
     <ng-template #divPersona>
-      <p>NIF</p>
+      <p class="verdigrande">NIF</p>
       <p>{{ persona.nif }}</p>
-      <p>NOMBRE</p>
+      <p class="verdigrande">NOMBRE</p>
       <p>{{ persona.nombre }}</p>
-      <p>PRIMER APELLIDO</p>
+      <p class="verdigrande">PRIMER APELLIDO</p>
       <p>{{ persona.apellido1 }}</p>
-      <p>SEGUNDO APELLIDO</p>
+      <p class="verdigrande">SEGUNDO APELLIDO</p>
       <p>{{ persona.apellido2 }}</p>
-      <p>EMAIL</p>
+      <p class="verdigrande">EMAIL</p>
       <p>{{ persona.email }}</p>
-      <button>CAMBIAR EMAIL</button>
-      <ion-button (click)="logout()" expand="block" fill="clear" shape="round">
+      <ion-button (click)="logout()" class="custom-buttom" expand="block" shape="round">
         CERRAR SESIÓN
       </ion-button>
-      <button>CAMBIAR CONTRASEÑA</button>
-    </ng-template>
+     </ng-template>
   </div>
 </ion-content>
