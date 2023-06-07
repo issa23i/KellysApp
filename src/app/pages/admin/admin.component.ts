@@ -19,7 +19,6 @@ export class AdminComponent implements OnInit {
     servicios: [],
     tieneSello: false,
     imagenes: [],
-    puntuacion_resenas: 0,
     estrellas: 0
   };
   imagen: Imagen = {
@@ -68,12 +67,17 @@ export class AdminComponent implements OnInit {
   abrirForm(){
     this.hayHoteles = false
   }
-
-  addHotel() {
-    this.hotelService.addHotel(this.hotel).subscribe((response) => {
-      // Manejar la respuesta del servidor, como mostrar un mensaje de éxito, limpiar el formulario, etc.
-      console.log('Hotel agregado:', response);
-      this.presentAlertCreateHotel(response.data._id);
+  
+  async addHotel() {
+    await this.hotelService.addHotel(this.hotel).subscribe({
+      next: (htl) => {
+        // Manejar la respuesta del servidor, como mostrar un mensaje de éxito, limpiar el formulario, etc.
+        console.log('Hotel agregado:', htl);
+        this.presentAlertCreateHotel(htl.data._id);
+      },
+      error: (e) => {
+        console.error('No se pudo añadir el hotel ', e)
+      }
     });
   }
 
@@ -81,11 +85,11 @@ export class AdminComponent implements OnInit {
     console.log('añadir imagen');
   }
 
-  parseServicios(value: string) {
+  async parseServicios(value: string) {
     this.hotel.servicios = value.split(',').map(servicio => servicio.trim());
   }
 
-  parseImagenes(value: string) {
+  async parseImagenes(value: string) {
     this.hotel.imagenes = value.split(',').map(servicio => servicio.trim());
   }
 
@@ -123,13 +127,11 @@ export class AdminComponent implements OnInit {
     };
   }
 
-  eliminarHotel(idHotel : string = ''){
+  async eliminarHotel(idHotel : string = ''){
     if(idHotel){
       this.hotelService.deleteHotel(idHotel).subscribe({
         next: (response) => {
           this.presentAlertDeleteHotel()
-          // Recargar la página inmediatamente
-          location.reload();
         },
         error: (error) => {}
       })

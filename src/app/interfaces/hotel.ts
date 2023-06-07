@@ -7,7 +7,7 @@ export interface Hotel {
     servicios:          string[];
     tieneSello:         boolean;
     imagenes:           string[];
-    puntuacion_resenas: number;
+    puntuacion_resenas?: number;
     estrellas:          number;
     createdAt?:     Date;
     updatedAt?:     Date;
