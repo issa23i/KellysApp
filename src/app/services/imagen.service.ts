@@ -24,5 +24,9 @@ export class ImagenService {
     return this.http.get<any>(this._apiUrlImagen)
   }
 
+  obtenerImagenes (){
+    this._apiUrlImagen = `${this._apiUrlImagenes}`
+    return this.http.get<any>(this._apiUrlImagen)
+  }
 
 }

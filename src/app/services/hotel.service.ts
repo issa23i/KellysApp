@@ -27,4 +27,11 @@ export class HotelService {
     return this.http.get<any>(`${this._apiUrlHoteles}/${hotelId}`)
   }
 
+  addHotel (hotel: Hotel){
+    return this.http.post<any>(this._apiUrlHoteles, hotel)
+  }
+
+  deleteHotel (hotelId: string){
+    return this.http.delete<any>(`${this._apiUrlHoteles}/${hotelId}`)
+  }
 }

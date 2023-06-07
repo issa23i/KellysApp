@@ -1,3 +1,109 @@
-<p>
-  admin works!
-</p>
+<ion-content [fullscreen]="true" class="ion-padding">
+  <div class="padding-top-save-header">
+    <ion-accordion-group>
+      <ion-accordion value="HOTELES">
+        <ion-item slot="header" color="secondary">
+          <ion-label>HOTELES</ion-label>
+          <ion-button (click)="abrirForm()" expand="block" fill="clear" shape="round">
+            Añadir
+          </ion-button>
+        </ion-item>
+        <div class="ion-padding" slot="content">
+          <ion-list *ngIf="hayHoteles; else formHotel">
+            <ion-item *ngFor="let h of hoteles">
+              {{h.nombre}}
+              <ion-button (click)="eliminarHotel(h._id)" expand="block" fill="clear" color="alert" shape="round">
+                Eliminar hotel
+              </ion-button>
+            </ion-item>
+          </ion-list>
+          <ng-template #formHotel>
+            
+            <form (ngSubmit)="addHotel()" #hotelForm="ngForm">
+              <div>
+                <input type="text" id="nombre" placeholder="Nombre" name="nombre" [(ngModel)]="hotel.nombre" required>
+                <div *ngIf="hotelForm.form.get('nombre')?.invalid && hotelForm.controls['nombre'].touched">
+                  <p class="error-message">El nombre es requerido.</p>
+                </div>
+              </div>
+            
+              <div>
+                <input type="text" id="direccion" placeholder="Dirección" name="direccion" [(ngModel)]="hotel.direccion" required>
+                <div *ngIf="hotelForm.form.get('direccion')?.invalid && hotelForm.controls['direccion'].touched">
+                  <p class="error-message">La dirección es requerida.</p>
+                </div>
+              </div>
+            
+              <div>
+                <input type="text" id="ciudad" placeholder="Ciudad" name="ciudad" [(ngModel)]="hotel.ciudad" required>
+                <div *ngIf="hotelForm.form.get('ciudad')?.invalid && hotelForm.controls['ciudad'].touched">
+                  <p class="error-message">La ciudad es requerida.</p>
+                </div>
+              </div>
+            
+              <div>
+                <textarea id="descripcion" placeholder="Descripción" name="descripcion" [(ngModel)]="hotel.descripcion" required></textarea>
+                <div *ngIf="hotelForm.form.get('descripcion')?.invalid && hotelForm.controls['descripcion'].touched">
+                  <p class="error-message">La descripción es requerida.</p>
+                </div>
+              </div>
+            
+              <div>
+                <input type="text" id="servicios" placeholder="Servicios" name="servicios" [(ngModel)]="hotel.servicios" (ngModelChange)="parseServicios($event)" required>
+                <div *ngIf="hotelForm.form.get('servicios')?.invalid && hotelForm.controls['servicios'].touched">
+                  <p class="error-message">Los servicios son requeridos.</p>
+                </div>
+              </div>
+            
+              <div>
+                <input type="number" id="estrellas" placeholder="Estrellas" name="estrellas" [(ngModel)]="hotel.estrellas" required>
+                <div *ngIf="hotelForm.form.get('estrellas')?.invalid && hotelForm.controls['estrellas'].touched">
+                  <p class="error-message">Las estrellas son requeridas.</p>
+                </div>
+              </div>
+            
+              <div>
+                <label for="tieneSello">Tiene Sello: </label>
+                <input type="checkbox" id="tieneSello" name="tieneSello" [(ngModel)]="hotel.tieneSello" >
+                <div *ngIf="hotelForm.form.get('tieneSello')?.invalid && hotelForm.controls['tieneSello'].touched">
+                  <p class="error-message">La opción de tener sello es requerida.</p>
+                </div>
+              </div>
+            
+              <div>
+                <input type="text" id="imagenes" placeholder="Ids de la imagenes" name="imagenes" [(ngModel)]="hotel.imagenes" (ngModelChange)="parseImagenes($event)" multiple required>
+                <div *ngIf="hotelForm.form.get('imagenes')?.invalid && hotelForm.controls['imagenes'].touched">
+                  <p class="error-message">Las imágenes son requeridas.</p>
+                </div>
+              </div>
+            
+              <button type="submit" [disabled]="hotelForm.invalid">Agregar Hotel</button>
+              <button type="button" (click)="limpiarCampos()">Limpiar Campos</button>
+
+            </form>
+            
+
+
+          </ng-template>
+          
+        </div>
+      </ion-accordion>
+     
+      <ion-accordion value="IMÁGENES">
+        <ion-item slot="header" color="secondary">
+          <ion-label>IMÁGENES</ion-label>
+          <ion-button (click)="addImagen()" expand="block" fill="clear" shape="round">
+            Añadir
+          </ion-button>
+        </ion-item>
+        <div class="ion-padding" slot="content">
+          <ion-list *ngIf="hayImagenes">
+            <ion-item *ngFor="let img of imagenes">
+              {{img.filename}}
+            </ion-item>
+          </ion-list>
+        </div>
+      </ion-accordion>
+    </ion-accordion-group>
+  </div>
+</ion-content>
