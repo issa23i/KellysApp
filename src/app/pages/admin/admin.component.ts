@@ -31,6 +31,8 @@ export class AdminComponent implements OnInit {
   hayHoteles: boolean = false
   hayImagenes: boolean = false
 
+  errorImagen: boolean = false
+
   constructor(
     private hotelService: HotelService,
     private imagenService: ImagenService,
@@ -85,7 +87,7 @@ export class AdminComponent implements OnInit {
     });
   }
 
-  
+
   onImageSelected(event: any){
     if (event.target.files && event.target.files.length > 0) {
       this.imagenFile = event.target.files[0];
@@ -95,6 +97,7 @@ export class AdminComponent implements OnInit {
   }
 
   addImagen() {
+    this.errorImagen = false
     console.log('subir imagen')
     this.imagenService.subirImagen(this.imagenFile).subscribe({
       next: (resp) => {
@@ -106,6 +109,7 @@ export class AdminComponent implements OnInit {
       },
       error: (e) => {
         console.error('No se pudo completar la subida del archivo ', e)
+        this.errorImagen = true
       }
     })
   }

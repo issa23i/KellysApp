@@ -112,7 +112,7 @@
               <div>
                 <!-- onImageSelected($event) hace que cuando el usuario cargue el archivo, 
                     el archivo se guarde en la variable imagen y se muestre en el input -->
-                <input type="file" id="imagen" name="imagen" (change)="onImageSelected($event)" required>
+                <input type="file" accept="image/*" id="imagen" name="imagen" (change)="onImageSelected($event)" required>
                 <div *ngIf="imagenForm.form.get('imagen')?.invalid && imagenForm.controls['imagen'].touched">
                   <p class="error-message">La imagen es requerida.</p>
                 </div>
@@ -121,6 +121,7 @@
             </form>
 
           </ng-template>
+          <p *ngIf="errorImagen" class="bg-danger blanco">Sólo admitidos archivos de imagen</p>
 
         </div>
       </ion-accordion>
