@@ -1,5 +1,7 @@
 <ion-content [fullscreen]="true" class="ion-padding">
   <div class="padding-top-save-header">
+    <div class="row">
+      <div class="col-sm-10 col-lg-8 mx-auto">
     <ion-accordion-group>
       <ion-accordion value="HOTELES">
         <ion-item slot="header" color="secondary">
@@ -77,8 +79,8 @@
                 </div>
               </div>
             
-              <button type="submit" [disabled]="hotelForm.invalid">Agregar Hotel</button>
-              <button type="button" (click)="limpiarCamposHotel()">Limpiar Campos</button>
+              <button type="submit" class="custom-buttom" [disabled]="hotelForm.invalid">Agregar Hotel</button>
+              <button type="button" class="custom-buttom" (click)="limpiarCamposHotel()">Limpiar Campos</button>
 
             </form>
             
@@ -117,7 +119,7 @@
                   <p class="error-message">La imagen es requerida.</p>
                 </div>
               </div>
-              <button type="submit" [disabled]="imagenForm.invalid">Subir Imagen</button>
+              <button type="submit" class="custom-buttom" [disabled]="imagenForm.invalid">Subir Imagen</button>
             </form>
 
           </ng-template>
@@ -126,5 +128,7 @@
         </div>
       </ion-accordion>
     </ion-accordion-group>
+  </div>
+  </div>
   </div>
 </ion-content>

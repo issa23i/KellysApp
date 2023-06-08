@@ -34,4 +34,8 @@ export class HotelService {
   deleteHotel (hotelId: string){
     return this.http.delete<any>(`${this._apiUrlHoteles}/${hotelId}`)
   }
+
+  updateHotel (hotelId: string, updateHotel :any){
+    return this.http.put<any>(`${this._apiUrlHoteles}/${hotelId}`, updateHotel)
+  }
 }

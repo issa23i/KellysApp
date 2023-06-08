@@ -4,7 +4,7 @@
     <div id="main-content">
       <ion-header collapse="fade">
         <ion-toolbar>
-          <ion-buttons slot="start">
+          <ion-buttons slot="start" class="d-lg-none">
             <ion-menu-button></ion-menu-button>
           </ion-buttons>
           <ion-title class="ion-text-center ion-padding">
@@ -15,7 +15,7 @@
                 id="logo"
             /></a>
           </ion-title>
-          <ion-buttons slot="end">
+          <ion-buttons slot="end" class="d-lg-none">
             <ion-button>
               <a  href="/mi-perfil">
                 <ion-icon
@@ -36,7 +36,7 @@
 
 
 <!-- MODAL AL SELECCIONAR EL MENÚ HAMBURGUESA -->
-<ion-menu contentId="main-content">
+<ion-menu contentId="main-content" class="d-lg-none">
   <ion-toolbar>
     <ion-title>MENU</ion-title>
     <ion-buttons slot="end">
@@ -46,6 +46,7 @@
     </ion-buttons>
   </ion-toolbar>
   <ion-content class="ion-padding">
+    <ion-list>
     <ion-item button href="/mi-perfil">
       <ion-icon name="person-circle-outline" slot="start"></ion-icon>
       <ion-label>Mi perfil</ion-label>
@@ -65,5 +66,33 @@
       <ion-icon name="search" slot="start"></ion-icon>
       <ion-label>Buscar</ion-label>
     </ion-item>
+  </ion-list>
   </ion-content>
 </ion-menu>
+
+<!-- MENÚ HORIZONTAL PANTALLAS GRANDES -->
+<ion-toolbar class="d-none d-lg-flex">
+  <ion-title class="logo-container">
+    <a href="/home">
+      <img src="./../../../assets/images/logoKellysApp_black.svg" alt="Logo" id="logo" />
+    </a>
+  </ion-title>
+  <ion-buttons slot="end">
+    <ion-button href="/mi-perfil">
+      <ion-icon name="person-circle-outline" slot="end"></ion-icon>
+      <ion-label>Mi perfil</ion-label>
+    </ion-button>
+    <ion-button href="/mis-reservas">
+      <ion-icon name="journal" slot="end"></ion-icon>
+      <ion-label>Mis reservas</ion-label>
+    </ion-button>
+    <ion-button href="/por-que">
+      <ion-icon name="help" slot="end"></ion-icon>
+      <ion-label>¿Por qué KellysApp?</ion-label>
+    </ion-button>
+    <ion-button href="/home">
+      <ion-icon name="search" slot="end"></ion-icon>
+      <ion-label>Buscar</ion-label>
+    </ion-button>
+  </ion-buttons>
+</ion-toolbar>

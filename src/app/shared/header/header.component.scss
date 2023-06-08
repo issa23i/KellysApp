@@ -10,4 +10,25 @@ ion-title, ion-icon{
   color: #E71D73;
 }
 
+@media (min-width: 992px) {
+  .logo-container {
+    display: flex;
+    align-items: center;
+    flex: 1;
+  }
+
+  .logo-container a {
+    display: flex;
+    align-items: center;
+  }
+  ion-header{
+    display: none;
+  }
+
+  ion-label{
+    display: flex;
+    align-items: center;
+    margin-top: 0.5em
+  }
+}
 
