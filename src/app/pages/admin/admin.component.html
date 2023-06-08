@@ -4,7 +4,7 @@
       <ion-accordion value="HOTELES">
         <ion-item slot="header" color="secondary">
           <ion-label>HOTELES</ion-label>
-          <ion-button (click)="abrirForm()" expand="block" fill="clear" shape="round">
+          <ion-button (click)="abrirFormHotel()" expand="block" fill="clear" shape="round">
             Añadir
           </ion-button>
         </ion-item>
@@ -12,14 +12,14 @@
           <ion-list *ngIf="hayHoteles; else formHotel">
             <ion-item *ngFor="let h of hoteles">
               {{h.nombre}}
-              <ion-button (click)="eliminarHotel(h._id)" expand="block" fill="clear" color="alert" shape="round">
+              <ion-button slot="end" (click)="eliminarHotel(h._id)" expand="block" fill="clear" color="alert" shape="round">
                 Eliminar hotel
               </ion-button>
             </ion-item>
           </ion-list>
           <ng-template #formHotel>
             
-            <form (ngSubmit)="addHotel()" #hotelForm="ngForm">
+            <form class="formAddHotel" (ngSubmit)="addHotel()" #hotelForm="ngForm">
               <div>
                 <input type="text" id="nombre" placeholder="Nombre" name="nombre" [(ngModel)]="hotel.nombre" required>
                 <div *ngIf="hotelForm.form.get('nombre')?.invalid && hotelForm.controls['nombre'].touched">
@@ -78,7 +78,7 @@
               </div>
             
               <button type="submit" [disabled]="hotelForm.invalid">Agregar Hotel</button>
-              <button type="button" (click)="limpiarCampos()">Limpiar Campos</button>
+              <button type="button" (click)="limpiarCamposHotel()">Limpiar Campos</button>
 
             </form>
             
@@ -92,16 +92,36 @@
       <ion-accordion value="IMÁGENES">
         <ion-item slot="header" color="secondary">
           <ion-label>IMÁGENES</ion-label>
-          <ion-button (click)="addImagen()" expand="block" fill="clear" shape="round">
+          <ion-button (click)="abrirFormImagen()" expand="block" fill="clear" shape="round">
             Añadir
           </ion-button>
         </ion-item>
         <div class="ion-padding" slot="content">
-          <ion-list *ngIf="hayImagenes">
+          <ion-list *ngIf="hayImagenes; else formImagen">
             <ion-item *ngFor="let img of imagenes">
               {{img.filename}}
+              <ion-button slot="end" (click)="eliminarImagen(img._id)" expand="block" fill="clear" color="alert" shape="round">
+                Eliminar imagen
+              </ion-button>
             </ion-item>
           </ion-list>
+
+          <ng-template #formImagen>
+
+            <form (ngSubmit)="addImagen()" #imagenForm="ngForm" enctype="multipart/form-data">            
+              <div>
+                <!-- onImageSelected($event) hace que cuando el usuario cargue el archivo, 
+                    el archivo se guarde en la variable imagen y se muestre en el input -->
+                <input type="file" id="imagen" name="imagen" (change)="onImageSelected($event)" required>
+                <div *ngIf="imagenForm.form.get('imagen')?.invalid && imagenForm.controls['imagen'].touched">
+                  <p class="error-message">La imagen es requerida.</p>
+                </div>
+              </div>
+              <button type="submit" [disabled]="imagenForm.invalid">Subir Imagen</button>
+            </form>
+
+          </ng-template>
+
         </div>
       </ion-accordion>
     </ion-accordion-group>

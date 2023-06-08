@@ -4,6 +4,7 @@ import { Hotel } from 'src/app/interfaces/hotel';
 import { Imagen } from 'src/app/interfaces/imagen';
 import { HotelService } from 'src/app/services/hotel.service';
 import { ImagenService } from 'src/app/services/imagen.service';
+import { UrlTree } from '@angular/router';
 
 @Component({
   selector: 'app-admin',
@@ -21,10 +22,8 @@ export class AdminComponent implements OnInit {
     imagenes: [],
     estrellas: 0
   };
-  imagen: Imagen = {
-    url: '',
-    filename: ''
-  }
+  imagenFile!: File;
+  imagen : Imagen = {}
 
   hoteles: Hotel[] = [];
   imagenes: Imagen[] = [];
@@ -65,10 +64,14 @@ export class AdminComponent implements OnInit {
     });
 
   }
-  abrirForm(){
+
+  abrirFormHotel(){
     this.hayHoteles = false
   }
   
+  abrirFormImagen(){
+    this.hayImagenes = false
+  }
   addHotel() {
     this.hotelService.addHotel(this.hotel).subscribe({
       next: (htl) => {
@@ -82,8 +85,29 @@ export class AdminComponent implements OnInit {
     });
   }
 
+  
+  onImageSelected(event: any){
+    if (event.target.files && event.target.files.length > 0) {
+      this.imagenFile = event.target.files[0];
+    } else {
+      console.error('No se ha cargado la imagen en el formulario')
+    }
+  }
+
   addImagen() {
-    console.log('añadir imagen');
+    console.log('subir imagen')
+    this.imagenService.subirImagen(this.imagenFile).subscribe({
+      next: (resp) => {
+        console.log(resp)
+        this.imagen._id = resp.data._id
+        this.imagen.url = resp.data.url
+        this.imagen.filename = resp.data.filename
+        this.presentAlertCreateImagen(this.imagen._id || 'No especificada')
+      },
+      error: (e) => {
+        console.error('No se pudo completar la subida del archivo ', e)
+      }
+    })
   }
 
   async parseServicios(value: string) {
@@ -98,7 +122,27 @@ export class AdminComponent implements OnInit {
     const alert = await this.alertController.create({
       header: 'Hotel Agregado',
       message: 'El ID del hotel agregado es: ' + hotelId,
-      buttons: ['OK']
+      buttons: [{
+        text: 'OK',
+        handler: () => {// Recargar la página al cerrar el alert
+          window.location.reload(); 
+        }
+      }]
+    });
+  
+    await alert.present();
+  }
+
+  async presentAlertCreateImagen(imagenId: string) {
+    const alert = await this.alertController.create({
+      header: 'Imagen subida',
+      message: 'El ID de la imagen subida es: ' + imagenId,
+      buttons: [{
+        text: 'OK',
+        handler: () => {// Recargar la página al cerrar el alert
+          window.location.reload(); 
+        }
+      }]
     });
   
     await alert.present();
@@ -108,13 +152,34 @@ export class AdminComponent implements OnInit {
     const alert = await this.alertController.create({
       header: 'Hotel Eliminado',
       message: 'El Hotel se ha eliminado con éxito.',
-      buttons: ['OK']
+      buttons: [{
+        text: 'OK',
+        handler: () => {// Recargar la página al cerrar el alert
+          window.location.reload(); 
+        }
+      }]
     });
-    window.location.reload();
     await alert.present();
   }
+
+  async presentAlertDeleteImagen() {
+    const alert = await this.alertController.create({
+      header: 'Imagen eliminada',
+    message: 'La imagen ha sido eliminada con éxito.',
+    buttons: [
+      {
+        text: 'OK',
+        handler: () => {// Recargar la página al cerrar el alert
+          window.location.reload(); 
+        }
+      }
+    ]
+  });
+
+  await alert.present();
+  }
   
-  limpiarCampos() {
+  limpiarCamposHotel() {
     this.hotel = {
       nombre: '',
       direccion: '',
@@ -137,6 +202,21 @@ export class AdminComponent implements OnInit {
         },
         error: (error) => {
           console.log('No se pudo eliminar el hotel ', error)
+        }
+      })
+      
+    }
+  }
+
+  eliminarImagen(idImagen : string = ''){
+    if(idImagen){
+      this.imagenService.deleteImagen(idImagen).subscribe({
+        next: (response) => {
+          this.presentAlertDeleteImagen()
+          console.log(response)
+        },
+        error: (error) => {
+          console.log('No se pudo eliminar la imagen ', error)
         }
       })
       
