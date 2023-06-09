@@ -102,8 +102,7 @@
         <div class="ion-padding" slot="content">
           <ion-list *ngIf="hayImagenes; else formImagen">
             <ion-item *ngFor="let img of imagenes">
-              <a [routerLink]="['/imagen', img._id]">
-              <p class="fsize">{{img.filename}}</p></a>
+              <p class="fsize"  (click)="abrirModalImagen(img.url || '')" >{{img.filename}}</p>
               <button slot="end" class="custom-buttom" (click)="eliminarImagen(img._id)" expand="block" fill="clear" color="alert" shape="round">
                 Eliminar imagen
               </button>

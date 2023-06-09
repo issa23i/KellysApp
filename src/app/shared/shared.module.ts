@@ -9,11 +9,17 @@ import { NgbDatepicker } from '@ng-bootstrap/ng-bootstrap';
 import { ResultadoBusquedaComponent } from './resultado-busqueda/resultado-busqueda.component';
 import { ConfirmComponent } from './confirm/confirm.component';
 import { PagesModule } from '../pages/pages.module';
+import { ImagenModalComponent } from './imagen-modal/imagen-modal.component';
 
 
 
 @NgModule({
-  declarations: [HeaderComponent, BuscarComponent, ResultadoBusquedaComponent, ConfirmComponent],
+  declarations: [HeaderComponent, 
+    BuscarComponent, 
+    ResultadoBusquedaComponent, 
+    ConfirmComponent,
+    ImagenModalComponent
+  ],
   imports: [
     CommonModule,
     IonicModule,

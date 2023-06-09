@@ -1,10 +1,11 @@
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
-import { AlertController } from '@ionic/angular';
+import { AlertController, ModalController } from '@ionic/angular';
 import { Hotel } from 'src/app/interfaces/hotel';
 import { Imagen } from 'src/app/interfaces/imagen';
 import { HotelService } from 'src/app/services/hotel.service';
 import { ImagenService } from 'src/app/services/imagen.service';
 import { UrlTree } from '@angular/router';
+import { ImagenModalComponent } from 'src/app/shared/imagen-modal/imagen-modal.component';
 
 @Component({
   selector: 'app-admin',
@@ -37,7 +38,7 @@ export class AdminComponent implements OnInit {
     private hotelService: HotelService,
     private imagenService: ImagenService,
     private alertController: AlertController,
-    private changeDetectorRef: ChangeDetectorRef
+    private modalController: ModalController
   ) {}
 
   ngOnInit() {
@@ -226,4 +227,17 @@ export class AdminComponent implements OnInit {
       
     }
   }
+
+  async abrirModalImagen(imagenUrl: string ) {
+    const modal = await this.modalController.create({
+      component: ImagenModalComponent,
+      componentProps: {
+        imagenUrl: imagenUrl,
+      },
+    });
+  
+    return await modal.present();
+  }
+  
+
 }
