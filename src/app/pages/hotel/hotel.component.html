@@ -11,34 +11,40 @@
       </swiper-container>
 
       <!-- Pasamos el nombre del hotel como parámetro para mostrarlo en el formulario de búsqueda -->
-      <app-buscar [nombreHotel]=hotel.nombre></app-buscar>
- 
-      <!--Título y opiniones-->
-      <div class="m-3">
-        <h1 class="d-inline">{{ hotel.nombre }}</h1>
-        <div class="bg-secondary ion-float-end blanco p-1 pico d-inline">
-          {{ hotel.puntuacion_resenas }}
-        </div>
-      </div>
+      <app-buscar [nombreHotel]="hotel.nombre"></app-buscar>
 
-      <!--Estrellas y Mapa-->
-      <div class="m-3">
-        <div class="ion-margin-start ion-padding-start ion-margin-bottom d-inline">
-          <div
-            class="d-inline"
-            *ngFor="let estrella of getEstrellas(hotel.estrellas)"
-          >
-            <ion-icon name="star" color="warning"></ion-icon>
+      <div class="row justify-content-center pt-5">
+        <div class="col-12 col-md-10 col-lg-8">
+          <!--Título y opiniones-->
+          <div class="m-3">
+            <h1 class="d-inline">{{ hotel.nombre }}</h1>
+            <div class="bg-secondary ion-float-end blanco p-1 pico d-inline">
+              {{ hotel.puntuacion_resenas }}
+            </div>
           </div>
+
+          <!--Estrellas y Mapa-->
+          <div class="m-3">
+            <div
+              class="ion-margin-start ion-padding-start ion-margin-bottom d-inline"
+            >
+              <div
+                class="d-inline"
+                *ngFor="let estrella of getEstrellas(hotel.estrellas)"
+              >
+                <ion-icon name="star" color="warning"></ion-icon>
+              </div>
+            </div>
+            <div class="d-inline ion-float-end ion-margin-end">
+              {{ hotel.direccion }}
+            </div>
+          </div>
+
+          <p>{{ hotel.descripcion }}</p>
+          <p>Ciudad: {{ hotel.ciudad }}</p>
+          <p>Servicios: {{ hotel.servicios }}</p>
         </div>
-        <div class="d-inline ion-float-end ion-margin-end">{{ hotel.direccion }}</div>
       </div>
-
-      <p>{{ hotel.descripcion }}</p>
-      <p>Ciudad: {{ hotel.ciudad }}</p>
-      <p>Servicios: {{ hotel.servicios }}</p>
-
-      
       <app-resultado-busqueda></app-resultado-busqueda>
     </ng-template>
   </div>

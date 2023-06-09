@@ -60,7 +60,7 @@ $danger:#eb445a;
   }
   
   /** MÁRGENES **/
-  h1,h2,h3,h4,h5,p, a{
+  h1,h2,h3,h4,h5,p{
     margin-left: 6vw;
     margin-right: 6vw;
   }
@@ -151,7 +151,7 @@ $danger:#eb445a;
     padding-top:6.5vh!important;
   }  
 
-  /* MÁXIMA ALTURA DE IMÁGENES */
+  /* MÁXIMA ALTURA DE IMÁGENES E IMÁGENES RESPONSIVE */
   swiper-slide ion-img {
     width: auto;
     max-width: 100%;
@@ -216,8 +216,9 @@ $danger:#eb445a;
       margin: auto;
       }
     .mensaje-alerta,.mensaje-error,.mensaje-info{
+      max-width: 60%;
       font-style: italic;
-      transform: scale(0.7); // más pequeña aún la letra
+      transform: scale(0.9); // más pequeña aún la letra
     }
     h1{
       color: $primary;
@@ -245,13 +246,18 @@ $danger:#eb445a;
       font-size: 21px;
       background-color: $primary;
       border-radius: 16px;
-      margin: 2em;
+      margin: 1em;
+      padding: 1em;
+      min-width: 32vw;
   }
 
   .centro{
     text-align: center;
   }
 
+  p>span{
+    color: $primary;
+  }
 
   .verdigrande{
     font-size:large;

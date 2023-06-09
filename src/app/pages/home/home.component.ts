@@ -85,8 +85,9 @@ export class HomeComponent implements OnInit {
   getUserLogged() {
     if (this.auth.getUsuario()) {
       let usuario: Usuario = this.auth.getUsuario();
-    } else {
-      // TODO: Hacer algo si no hay usuario logado
+      return usuario
+    } else {// undefined
+      return 
     }
   }
 

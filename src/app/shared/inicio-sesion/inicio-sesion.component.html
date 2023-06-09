@@ -10,19 +10,21 @@
         </ion-button>
       </ion-buttons>
     </div>
-    <div class="centro">
+    <div class="row centro">
       <ion-img src="../../../assets/images/kellys/kellys2.jpeg"></ion-img>
-      <div id="caja-logo">
+      <div id="caja-logo" class="col-12 col-md-6 col-lg-4">
         <ion-img src="../../../assets/images/logoKellysApp_black.png"></ion-img>
       </div>
     </div>
     <h1>Reserva con las Kellys en Hoteles justos</h1>
 
+    <div class="row justify-content-center">
+      <div class="col-md-6 col-lg-4 d-flex justify-content-center">
     <a [routerLink]="['/registro']" routerLinkActive="router-link-active">
       <button class="custom-buttom bg-secondary">Registrarse</button>
-    </a>
+    </a></div><div class="col-md-6 col-lg-4 d-flex justify-content-center">
     <a [routerLink]="['/login']" routerLinkActive="router-link-active">
       <button class="custom-buttom">Login</button>
-    </a>
+    </a></div></div>
   </div>
 </ion-content>

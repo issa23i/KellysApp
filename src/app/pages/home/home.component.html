@@ -1,6 +1,6 @@
-<ion-content class="ion-padding has-header has-subheader pormiscojones" padding-top>
+<ion-content class="ion-padding">
   <div class="padding-top-save-header">
-  <swiper-container [slidesPerView]="1" [loop]="true" [zoom]="true">
+  <swiper-container [loop]="true" [zoom]="true">
     <swiper-slide>
       <ion-img src='../../../assets/images/sevilla/2400-landscape-view-of-plaza-de-espana.jpg'></ion-img>
       <p class="etiqueta-imagen">Sevilla</p>
@@ -31,10 +31,10 @@
   <app-resultado-busqueda></app-resultado-busqueda>
   
   <div class="hotel-list-container" #divEticos>
+    <div class="row">
     <h3>Hoteles Éticos</h3>
-    
-    <ng-container *ngFor="let hotel of hoteles | slice: 0:3; let i = index">
- <a 
+    <ng-container *ngFor="let hotel of hoteles ; let i = index">
+ <a    class="col-12 col-md-6 col-lg-4"
         [routerLink]="['/hotel', hotel._id]"
         routerLinkActive="router-link-active"
         >
@@ -69,5 +69,5 @@
       </a
       >
     </ng-container>
-  </div>
+  </div></div>
 </ion-content>

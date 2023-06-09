@@ -1,6 +1,6 @@
 <ion-content [fullscreen]="true" class="ion-padding">
   <div class="padding-top-save-header">
-    <div class="bg-white d-flex justify-content-between align-items-center">
+    <div class="bg-white d-flex justify-content-between align-items-center m-3">
       <h2 class="fw-bolder">MI PERFIL</h2>
       <ion-buttons>
         <ion-button>
@@ -14,22 +14,43 @@
       <p>Espere por favor...</p>
     </div>
     <ng-template #divPersona>
-      <p class="verdigrande">NIF</p>
-      <p>{{ persona.nif }}</p>
-      <p class="verdigrande">NOMBRE</p>
-      <p>{{ persona.nombre }}</p>
-      <p class="verdigrande">PRIMER APELLIDO</p>
-      <p>{{ persona.apellido1 }}</p>
-      <p class="verdigrande">SEGUNDO APELLIDO</p>
-      <p>{{ persona.apellido2 }}</p>
-      <p class="verdigrande">EMAIL</p>
-      <p>{{ persona.email }}</p>
-      <ion-button id="admin" *ngIf="persona.rol==='admin'" (click)="admin()" color="secondary" expand="block" shape="round">
-        ADMIN
-      </ion-button>
-      <ion-button (click)="logout()" class="custom-buttom" expand="block" shape="round">
-        CERRAR SESIÓN
-      </ion-button>
-     </ng-template>
+      <div class="m-auto pt-4 w-75">
+        <p class="verdigrande">NIF</p>
+        <p>{{ persona.nif }}</p>
+        <p class="verdigrande">NOMBRE</p>
+        <p>{{ persona.nombre }}</p>
+        <p class="verdigrande">PRIMER APELLIDO</p>
+        <p>{{ persona.apellido1 }}</p>
+        <p class="verdigrande">SEGUNDO APELLIDO</p>
+        <p>{{ persona.apellido2 }}</p>
+        <p class="verdigrande">EMAIL</p>
+        <p>{{ persona.email }}</p>
+      </div>
+      <div class="row justify-content-center">
+        <div class="col-md-6 col-lg-4 d-flex justify-content-center">
+          <button
+            id="admin"
+            class="custom-buttom bg-secondary"
+            *ngIf="persona.rol === 'admin'"
+            (click)="admin()"
+            color="secondary"
+            expand="block"
+            shape="round"
+          >
+            ADMIN
+          </button>
+        </div>
+        <div class="col-md-6 col-lg-4 d-flex justify-content-center">
+          <button
+            (click)="logout()"
+            class="custom-buttom"
+            expand="block"
+            shape="round"
+          >
+            CERRAR SESIÓN
+          </button>
+        </div>
+      </div>
+    </ng-template>
   </div>
 </ion-content>
