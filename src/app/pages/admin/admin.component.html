@@ -13,10 +13,11 @@
         <div class="ion-padding" slot="content">
           <ion-list *ngIf="hayHoteles; else formHotel">
             <ion-item *ngFor="let h of hoteles">
-              {{h.nombre}}
-              <ion-button slot="end" (click)="eliminarHotel(h._id)" expand="block" fill="clear" color="alert" shape="round">
+              <a [routerLink]="['/hotel', h._id]">
+              <h3>{{h.nombre}}</h3></a>
+              <button slot="end" class="custom-buttom" (click)="eliminarHotel(h._id)" expand="block" fill="clear" color="alert" shape="round">
                 Eliminar hotel
-              </ion-button>
+              </button>
             </ion-item>
           </ion-list>
           <ng-template #formHotel>
@@ -101,10 +102,11 @@
         <div class="ion-padding" slot="content">
           <ion-list *ngIf="hayImagenes; else formImagen">
             <ion-item *ngFor="let img of imagenes">
-              {{img.filename}}
-              <ion-button slot="end" (click)="eliminarImagen(img._id)" expand="block" fill="clear" color="alert" shape="round">
+              <a [routerLink]="['/imagen', img._id]">
+              <p class="fsize">{{img.filename}}</p></a>
+              <button slot="end" class="custom-buttom" (click)="eliminarImagen(img._id)" expand="block" fill="clear" color="alert" shape="round">
                 Eliminar imagen
-              </ion-button>
+              </button>
             </ion-item>
           </ion-list>
 
