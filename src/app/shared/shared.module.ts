@@ -10,6 +10,7 @@ import { ResultadoBusquedaComponent } from './resultado-busqueda/resultado-busqu
 import { ConfirmComponent } from './confirm/confirm.component';
 import { PagesModule } from '../pages/pages.module';
 import { ImagenModalComponent } from './imagen-modal/imagen-modal.component';
+import { MapboxComponent } from './mapbox/mapbox.component';
 
 
 
@@ -18,7 +19,8 @@ import { ImagenModalComponent } from './imagen-modal/imagen-modal.component';
     BuscarComponent, 
     ResultadoBusquedaComponent, 
     ConfirmComponent,
-    ImagenModalComponent
+    ImagenModalComponent,
+    MapboxComponent
   ],
   imports: [
     CommonModule,

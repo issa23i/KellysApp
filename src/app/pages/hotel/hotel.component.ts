@@ -4,8 +4,10 @@ import { Hotel } from 'src/app/interfaces/hotel';
 import { HotelService } from 'src/app/services/hotel.service';
 import { ImagenService } from '../../services/imagen.service';
 import { Imagen } from 'src/app/interfaces/imagen';
-import { error } from 'console';
 import { HabitacionService } from 'src/app/services/habitacion.service';
+import { ModalController } from '@ionic/angular';
+import { MapboxComponent } from 'src/app/shared/mapbox/mapbox.component';
+
 
 @Component({
   selector: 'app-hotel',
@@ -35,7 +37,8 @@ export class HotelComponent implements OnInit {
     private hotelService: HotelService,
     private activatedRoute: ActivatedRoute,
     private imagenService: ImagenService,
-    private habitacionService: HabitacionService
+    private habitacionService: HabitacionService,
+    private modalController: ModalController
   ) {}
 
   ngOnInit() {
@@ -105,5 +108,16 @@ export class HotelComponent implements OnInit {
         console.error('Error al obtener la habitación ', err);
       }
     })
+  }
+
+  async openMapModal() {
+    const modal = await this.modalController.create({
+      component: MapboxComponent,
+      componentProps: {
+        address: this.hotel.direccion
+      },
+      cssClass: 'map-modal' // Clase CSS opcional para personalizar el estilo del modal
+    });
+    return await modal.present();
   }
 }

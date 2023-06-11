@@ -13,6 +13,7 @@ import { ConfirmComponent } from './shared/confirm/confirm.component';
 import { InicioSesionComponent } from './shared/inicio-sesion/inicio-sesion.component';
 import { AdminComponent } from './pages/admin/admin.component';
 import { AdminGuard } from './guards/admin.guard';
+import { MapboxComponent } from './shared/mapbox/mapbox.component';
 
 const routes: Routes = [
   {
@@ -73,6 +74,11 @@ const routes: Routes = [
     component: PorQueComponent,
     pathMatch: 'full'
   },
+  {
+    path:'mapa',
+    component: MapboxComponent
+  },
+
   {
     path: 'hotel',
     component: HotelComponent,

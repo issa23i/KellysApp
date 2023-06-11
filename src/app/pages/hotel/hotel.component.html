@@ -1,5 +1,6 @@
 <ion-content [fullscreen]="true" class="ion-padding">
   <div class="padding-top-save-header">
+
     <div class="alert alert-info" *ngIf="!cargado; else divHotel">
       <p>Espere...</p>
     </div>
@@ -36,7 +37,8 @@
               </div>
             </div>
             <div class="d-inline ion-float-end ion-margin-end">
-              {{ hotel.direccion }}
+              {{ hotel.direccion }} <ion-icon name="map" color="primary" (click)="openMapModal()"></ion-icon>
+
             </div>
           </div>
 
@@ -44,8 +46,12 @@
           <p>Ciudad: {{ hotel.ciudad }}</p>
           <p>Servicios: {{ hotel.servicios }}</p>
         </div>
+        <app-mapbox></app-mapbox>
       </div>
       <app-resultado-busqueda></app-resultado-busqueda>
+      
     </ng-template>
+        
+
   </div>
 </ion-content>
